@@ -109,7 +109,7 @@ public class AgenciaTurismo {
         System.out.println("Paquetes disponibles: ");
         for (int i = 0; i < paquetesDisponibles.size(); i++){
             System.out.println("____________________________________________________________________________");
-            System.out.println((i + 1) + "-Paquete: " + paquetesDisponibles.get(i).getNombrePaquete() + " | Destino: " + paquetesDisponibles.get(i).getDestino() + " | Medio de Transporte: " + paquetesDisponibles.get(i).getMedioTransporte() " | Hospedaje: " + paquetesDisponibles.get(i).getHospedaje());
+            System.out.println((i + 1) + "-Paquete: " + paquetesDisponibles.get(i).getNombrePaquete() + " | Destino: " + paquetesDisponibles.get(i).getDestino() + " | Medio de Transporte: " + paquetesDisponibles.get(i).getMedioTransporte() + " | Hospedaje: " + paquetesDisponibles.get(i).getHospedaje());
             System.out.print("\nExcursiones: ");
             for (int j = 0; j < paquetesDisponibles.get(i).getExcursiones().size(); j++){
                 System.out.print(" " + paquetesDisponibles.get(i).getExcursiones().get(j));
