@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ClubFutbol {
-    ArrayList<Socios> credencial = new ArrayList<>();
+    private ArrayList<Socios> credencial = new ArrayList<>();
 
     public void inscripcion(String nombre, String apellido, String DNI, int edad, String contacto, String direccion, String email, Subscripciones suscripcionElegida){
         Socios nuevo_socio = new Socios();
