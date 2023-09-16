@@ -1,6 +1,10 @@
+import ar.edu.unlu.poo.agencia.AgenciaTurismo;
+import ar.edu.unlu.poo.agencia.Clasificacion;
 import ar.edu.unlu.poo.club.ClubFutbol;
 import ar.edu.unlu.poo.club.Subscripciones;
 
+import java.time.Month;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ejemplos_ejerciciosMainTP2 {
@@ -12,7 +16,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_1();
                 break;
             case 2:
-                //ejemplo_2();
+                ejemplo_2();
                 break;
             case 3:
                 //ejemplo_3();
@@ -89,6 +93,7 @@ public class ejemplos_ejerciciosMainTP2 {
     }
 
     public static void ejemplo_1(){
+        System.out.println("Ejemplos del ejercicio 1:");
         System.out.println("Creo al objeto Club de futbol...");
         ClubFutbol nuevo_club = new ClubFutbol();
         System.out.println("inscribo a 10 nuevos socios...");
@@ -103,8 +108,9 @@ public class ejemplos_ejerciciosMainTP2 {
         nuevo_club.inscripcion("Florencia", "Planes", "35.279.299", 33, "11-1234-3769", "Micasa475", "Flor555@gmail.com", Subscripciones.BASICA );
         nuevo_club.inscripcion("Santiago", "Diaz", "43.925.911", 20, "11-1456-4457", "Micasa997", "Santi72@gmail.com", Subscripciones.INTERMEDIA );
 
-        System.out.println("\n muestro el reporte mensual de usuarios inscriptos... \n(en este caso deberia de mostrar todos porque se inscribieron hoy esos nuevos socios)");
-        nuevo_club.reporte_mensual();
+        System.out.println("\n muestro el reporte mensual de usuarios inscriptos en septiembre... \n(en este caso deberia de mostrar todos porque se inscribieron hoy esos nuevos socios)");
+        System.out.println("AVISO: si no muestra nada es porque esta probando el ejemplo en un mes que no es septiembre por lo que los alumnos seran creados con el mes actual que sea");
+        nuevo_club.reporte_mensual(Month.SEPTEMBER);
 
         System.out.println("\nMuestro las actividades disponibles segun la subscripcion...");
         nuevo_club.actividades_sub(Subscripciones.BASICA);
@@ -114,5 +120,38 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("\n Muestro un listado de socios clasificados segun su subscripcion...");
         nuevo_club.mostrarPorOrdenSub();
     }
+    public static void ejemplo_2(){
+        System.out.println("Ejemplos del ejercicio 2: ");
+        System.out.println("Creo a la agencia de turismo...");
+        AgenciaTurismo sunBeach = new AgenciaTurismo();
+        System.out.println("agrego algunos proveedores...");
+        sunBeach.nuevoProveedor("FlechaBus", "Compania Terrestre", Clasificacion.MEDIO_DE_TRANSPORTE);
+        sunBeach.nuevoProveedor("Elitas travel", "Compania aerea", Clasificacion.MEDIO_DE_TRANSPORTE);
+        sunBeach.nuevoProveedor("Paraiso Hotel", "Cadenas de hoteles", Clasificacion.HOSPEDAJE);
+        sunBeach.nuevoProveedor("Hotel Kia Ora", "Compania de bungalos", Clasificacion.HOSPEDAJE);
+        sunBeach.nuevoProveedor("GeoTour", "Compania de guias de turismo", Clasificacion.EXCURSION);
+        sunBeach.nuevoProveedor("SafeTravel", "Compania de guias de turismo", Clasificacion.EXCURSION);
+
+        System.out.println("Solicito el registro que contiene a los proveedores...");
+        sunBeach.registrosProveedores();
+
+        System.out.println("Creo los paquetes de turismo...");
+        ArrayList<String> excursiones = new ArrayList<>();
+        excursiones.add("Excursion en la montania (SafeTravel)");
+        excursiones.add("Excursion por el lago (SafeTravel)");
+        sunBeach.nuevoPaqueteTurismo("Paquete Deluxe", "Bariloche", "Colectivo (FlechaBus)", "Hotel (Paraiso Hotel)", excursiones);
+        excursiones.clear();
+        excursiones.add("Excursion por el mar (GeoTravel)");
+        excursiones.add("Excursion por el lago (GeoTravel)");
+        sunBeach.nuevoPaqueteTurismo("Paquete Premium", "Polinesia Francesa", "Avion (Elitas Travel)", "Hotel (hotel kia Ora)", excursiones);
+
+        System.out.println("Solicito mostrar los paquetes de turismo...");
+        sunBeach.mostrarPaquetesTurismo();
+
+        System.out.println("Agrego nuevo clientes y realizo compras...");
+        sunBeach.nueva_compra(false, "Pepito Morales", "34.783.436", "Polinesia Francesa", "Paquete Premium");
+    }
+
+
 
 }

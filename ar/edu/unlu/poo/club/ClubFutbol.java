@@ -1,6 +1,7 @@
 package ar.edu.unlu.poo.club;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 public class ClubFutbol {
@@ -20,14 +21,15 @@ public class ClubFutbol {
         credencial.add(nuevo_socio);
     }
 
-    public void reporte_mensual(){
+    public void reporte_mensual(Month mes){
+        LocalDate mesPedido = LocalDate.of(2023,  mes, 1);
         if (credencial.isEmpty()){
 
         }else {
             System.out.println("Reporte Mensual: ");
             System.out.println("________________________________________________________________________________________");
             for (int i = 0; i < credencial.size(); i++){
-        if (LocalDate.now().getMonth().equals(credencial.get(i).getFecha_inscripcion().getMonth())){
+        if (mesPedido.getMonth().equals(credencial.get(i).getFecha_inscripcion().getMonth())){
             //si el socio se inscribio en el mes actual se muestra por pantalla
             // en cambio si se inscribio meses atras no se muestra
             System.out.println("Socio " + (i + 1) + "- Nombre: " + credencial.get(i).getNombre() + " / Apellido: " + credencial.get(i).getApellido());
