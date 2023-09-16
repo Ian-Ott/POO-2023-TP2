@@ -73,8 +73,8 @@ public class Secretaria {
 
     public void registrar_asistencia(CredencialAlumno credencial, String disciplina, Nivel nivel) {
         for (int i = 0; i < asistenciasAlumno.size(); i++){
-            if (asistenciasAlumno.get(i).alumno.getNombre_apellido().equals(credencial.getNombre_apellido())){
-                if (asistenciasAlumno.get(i).disciplina.equals(disciplina)){
+            if (asistenciasAlumno.get(i).getAlumno().getNombre_apellido().equals(credencial.getNombre_apellido())){
+                if (asistenciasAlumno.get(i).getDisciplina().equals(disciplina)){
                     if (asistenciasAlumno.get(i).getComisionElegida().getNivelDisciplina().equals(nivel)){
                         asistenciasAlumno.get(i).sumarAsistencia();
                     }

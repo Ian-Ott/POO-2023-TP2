@@ -2,10 +2,10 @@ package ar.edu.unlu.poo.academia;
 
 public class Asistencia {
     //La asistencia contiene la informacion sobre las asistencias del alumno en la comision de su displina
-    String disciplina;
-    Diagramaciones comisionElegida;
-    int cant_asistencias = 0;
-    CredencialAlumno alumno;
+    private String disciplina;
+    private Diagramaciones comisionElegida;
+    private int cant_asistencias = 0;
+    private CredencialAlumno alumno;
 
     public void setAlumno(CredencialAlumno alumno) {
         this.alumno = alumno;

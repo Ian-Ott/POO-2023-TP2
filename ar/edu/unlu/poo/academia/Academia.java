@@ -78,9 +78,9 @@ public class Academia {
         double importeTotal = 0;
         for (int i = 0; i < asistenciasAux.size(); i++){
             if (asistenciasAux.get(i).getComisionElegida().getProfesor().equals(profe)){
-                importeTotal += (asistenciasAux.get(i).cant_asistencias * 10);
-                System.out.println("El alumno " + asistenciasAux.get(i).alumno.getNombre_apellido() + " Asistio a las clases de " + asistenciasAux.get(i).disciplina +
-                        " con un total de " + asistenciasAux.get(i).cant_asistencias + " asistencias");
+                importeTotal += (asistenciasAux.get(i).getCant_asistencias() * 10);
+                System.out.println("El alumno " + asistenciasAux.get(i).getAlumno().getNombre_apellido() + " Asistio a las clases de " + asistenciasAux.get(i).getDisciplina() +
+                        " con un total de " + asistenciasAux.get(i).getCant_asistencias() + " asistencias");
             }
         }
         System.out.println("El profesor " + profe + "va a cobrar" + importeTotal + "$");
