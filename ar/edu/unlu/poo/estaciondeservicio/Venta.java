@@ -6,6 +6,7 @@ public class Venta {
     private LocalDateTime FechaHora;
     private Float ImporteTotal;
     private Float LitrosExpendidos;
+    //podria sacar el de litros
     private Cliente Comprador;
     private Empleado playeroAfectado;
     private Expendedor expendedorUsado;

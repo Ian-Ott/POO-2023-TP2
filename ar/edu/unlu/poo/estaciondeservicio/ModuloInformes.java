@@ -49,7 +49,8 @@ public class ModuloInformes {
         nueva_venta.setFechaHora(LocalDateTime.now());
         for (int i = 0; i < listaExpendedores.size(); i++){
             if (listaExpendedores.get(i).getCodigo() == expendedor){
-                nueva_venta.setImporteTotal(cant_litros * listaExpendedores.get(i).getTipoCombustible().getPrecioVenta());
+                Float total_venta = cant_litros * listaExpendedores.get(i).getTipoCombustible().getPrecioVenta();
+                nueva_venta.setImporteTotal(total_venta);
                 nueva_venta.setExpendedorUsado(listaExpendedores.get(i));
             }
         }
@@ -74,27 +75,25 @@ public class ModuloInformes {
    public void InformeTop10Clientes(){
        List<Cliente> listaClientes = new ArrayList<>();
        calcularTotalesClientes();
-       Cliente mayorActual = null;
-       Float importeMayorActual = 0F;
-       for (int i = 0; i < 10; i++){
-           for (int j = 0; j < clientes.size();j++){
-               if (clientes.get(i).getTotalGastado() > importeMayorActual){
-                   if (listaClientes.contains(clientes.get(i))){
-
-                   }else {
-                       mayorActual = clientes.get(i);
-                       importeMayorActual = clientes.get(i).getTotalGastado();
-                   }
+           for (int i = 0; i < clientes.size();i++){
+               if (!listaClientes.contains(clientes.get(i))){
+                   insertarOrdenMayorVentaCliente(listaClientes, clientes.get(i));
                }
            }
-           listaClientes.add(mayorActual);
-       }
        mostrarTop10(listaClientes);
    }
 
+    private void insertarOrdenMayorVentaCliente(List<Cliente> listaClientes, Cliente cliente) {
+        for (int i = 0; i < listaClientes.size(); i++){
+            if (listaClientes.get(i).getTotalGastado() > cliente.getTotalGastado()){
+                listaClientes.add(i,cliente);
+            }
+        }
+    }
+
     private void mostrarTop10(List<Cliente> listaClientes) {
         System.out.println("Top 10 clientes de la estacion de servicio: ");
-        for (int i = 0; i < listaClientes.size(); i++){
+        for (int i = 0; i < 10; i++){
             System.out.println(i + "- " + "nombre y apellido: " + listaClientes.get(i).getNombre_apellido() + " | DNI: " + listaClientes.get(i).getDNI() + " | Patente: " + listaClientes.get(i).getPatente() + " | Total gastado: " + listaClientes.get(i).getTotalGastado());
         }
     }
@@ -113,17 +112,166 @@ public class ModuloInformes {
     }
 
     public void InformeVentasXCombustible(){
+        List<Combustible> listaCombustibles;
+        calcularTotalesSurtidores();
+        listaCombustibles = generarListaXCombustible();
+        for (int i = 0; i < listaCombustibles.size(); i++){
+            Combustible actual = listaCombustibles.get(i);
+            System.out.println("Tipo de Combustible: " + actual.getNombre() + " | Precio de venta: " + actual.getPrecioVenta() +
+                    "$ | Total recaudado: " + actual.getTotalVentasXcombustible());
+        }
+   }
+
+    private List<Combustible> generarListaXCombustible() {
+        List<Combustible> lista = new ArrayList<>();
+        boolean estaEnLaLista;
+        for (int i = 0; i < listaExpendedores.size(); i++){
+            estaEnLaLista = false;
+            if (lista.isEmpty()){
+                agregarCombustible(lista, listaExpendedores.get(i));
+            }else {
+                for (int j = 0; j < lista.size(); j++){
+                    if (lista.get(j).getNombre().contains(listaExpendedores.get(i).getTipoCombustible().getNombre())){
+                        estaEnLaLista = true;
+                        lista.get(j).sumarTotalVentasXcombustible(listaExpendedores.get(i).getTotalVentas());
+                    }
+                }
+                if (!estaEnLaLista){
+                    agregarCombustible(lista, listaExpendedores.get(i));
+                }
+            }
+        }
+        return lista;
+    }
+
+    private void agregarCombustible(List<Combustible> lista, Expendedor expendedor) {
+        Combustible nuevo = new Combustible();
+        nuevo.setNombre(expendedor.getTipoCombustible().getNombre());
+        nuevo.setPrecioVenta(expendedor.getTipoCombustible().getPrecioVenta());
+        nuevo.sumarTotalVentasXcombustible(expendedor.getTotalVentas());
+        lista.add(nuevo);
+    }
+
+    private void mostrarListaSurtidor(List<Expendedor> listaSurtidores) {
+        for (int i = 0; i < listaSurtidores.size(); i++){
+            System.out.println("Surtidor: "+ listaSurtidores.get(i).getCodigo() + " | Tipo de combustible: " + listaSurtidores.get(i).getTipoCombustible().getNombre() +
+                    " | Precio de venta: " + listaSurtidores.get(i).getTipoCombustible().getPrecioVenta() + "$ | Total recaudado: " + listaSurtidores.get(i).getTotalVentas() +
+                    "$ | Total de litros: "  + listaSurtidores.get(i).getTipoCombustible().getTotalLitros());
+        }
+    }
+
+    private void insertarOrdenMayorVentaSurtidor(List<Expendedor> listaSurtidores, Expendedor expendedor) {
+        boolean agregado = false;
+        for (int i = 0; i < listaSurtidores.size(); i++){
+            if (expendedor.getTotalVentas() > listaSurtidores.get(i).getTotalVentas()){
+                listaSurtidores.add(i,expendedor);
+                agregado = true;
+            }
+        }
+        if (!agregado){
+            listaSurtidores.add(expendedor);
+        }
+    }
+
+    public void InformeVentasXSurtidor(){
+        List<Expendedor> listaSurtidores = new ArrayList<>();
+        calcularTotalesSurtidores();
+        for (int i = 0; i < listaExpendedores.size(); i++){
+            if(!listaSurtidores.contains(listaExpendedores.get(i))){
+                insertarOrdenMayorVentaSurtidor(listaSurtidores, listaExpendedores.get(i));
+            }
+        }
+        System.out.println("Lista de surtidores ordenados por su total de ventas: ");
+        mostrarListaSurtidor(listaSurtidores);
+   }
+
+    private void calcularTotalesSurtidores() {
+        Float totalSurtidorVenta;
+        Float totalLitros;
+        for (int i = 0; i < listaExpendedores.size(); i++){
+            totalSurtidorVenta = 0F;
+            totalLitros = 0F;
+            for (int j = 0; j < listaVentas.size(); j++){
+                if (listaVentas.get(j).getExpendedorUsado().getCodigo() == listaExpendedores.get(i).getCodigo()){
+                    totalSurtidorVenta += listaVentas.get(j).getImporteTotal();
+                    totalLitros += listaVentas.get(j).getLitrosExpendidos();
+                }
+            }
+            listaExpendedores.get(i).setTotalVentas(totalSurtidorVenta);
+            listaExpendedores.get(i).getTipoCombustible().setTotalLitros(totalLitros);
+        }
+    }
+
+    public void LitrosXSurtidor(){
+        calcularTotalesSurtidores();
+       List<Expendedor> listaSurtidores = new ArrayList<>();
+       for (int i = 0; i < listaExpendedores.size(); i++){
+           if(!listaSurtidores.contains(listaExpendedores.get(i))){
+               insertarOrdenMayorLitrosSurtidor(listaSurtidores, listaExpendedores.get(i));
+           }
+       }
+       System.out.println("Lista de surtidores ordenados por su cantidad de litros expendidos: ");
+       mostrarListaSurtidor(listaSurtidores);
 
    }
 
-   public void InformeVentasXSurtidor(){
+    private void insertarOrdenMayorLitrosSurtidor(List<Expendedor> listaSurtidores, Expendedor expendedor) {
+        boolean agregado = false;
+        for (int i = 0; i < listaSurtidores.size(); i++){
+            if (expendedor.getTipoCombustible().getTotalLitros() > listaSurtidores.get(i).getTipoCombustible().getTotalLitros()){
+                listaSurtidores.add(i,expendedor);
+                agregado = true;
+            }
+        }
+        if (!agregado){
+            listaSurtidores.add(expendedor);
+        }
+    }
 
+    public void InformeVentasXEmpleado(){
+        calcularTotalesEmpleado();
+        List<Empleado> listaEmpleados = new ArrayList<>();
+        for (int i = 0; i < empleados.size(); i++){
+            if(!listaEmpleados.contains(empleados.get(i))){
+                insertarOrdenMayorVentaEmpleados(listaEmpleados, empleados.get(i));
+            }
+        }
+        System.out.println("Lista de empleados ordenados por su total de ventas: ");
+        mostrarListaEmpleados(listaEmpleados);
    }
-   public void LitrosXSurtidor(){
 
-   }
+    private void mostrarListaEmpleados(List<Empleado> listaEmpleados) {
+        Empleado empleadoAux;
+        for (int i = 0; i < listaEmpleados.size();i++){
+            empleadoAux = listaEmpleados.get(i);
+            System.out.println((i+1) + "- nombre-apellido: " + empleadoAux.getNombre() + " " + empleadoAux.getApellido() +
+                    " | DNI: " + empleadoAux.getDNI() + " | Total de ventas: " + empleadoAux.getTotalVentasEmpleado());
+        }
+    }
 
-   public void InformeVentasXEmpleado(){
+    private void insertarOrdenMayorVentaEmpleados(List<Empleado> listaEmpleados, Empleado empleado) {
+        boolean agregado = false;
+        for (int i = 0; i < listaEmpleados.size(); i++){
+            if (empleado.getTotalVentasEmpleado() > listaEmpleados.get(i).getTotalVentasEmpleado()){
+                listaEmpleados.add(i,empleado);
+                agregado = true;
+            }
+        }
+        if (!agregado){
+            listaEmpleados.add(empleado);
+        }
+    }
 
-   }
+    private void calcularTotalesEmpleado() {
+        Float totalVentasEmpleado;
+        for (int i = 0; i < empleados.size(); i++){
+            totalVentasEmpleado = 0F;
+            for (int j = 0; j < listaVentas.size(); j++){
+                if (listaVentas.get(j).getPlayeroAfectado().getDNI().equals(empleados.get(i).getDNI())){
+                    totalVentasEmpleado += listaVentas.get(j).getImporteTotal();
+                }
+            }
+            empleados.get(i).setTotalVentasEmpleado(totalVentasEmpleado);
+        }
+    }
 }

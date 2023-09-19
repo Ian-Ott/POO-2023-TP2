@@ -10,6 +10,7 @@ public class Empleado {
     private String telefono;
     private ArrayList<Venta> ventasEmpleado = new ArrayList<>();
     //posiblemente eliminar esto
+    private Float totalVentasEmpleado = 0F;
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -57,5 +58,13 @@ public class Empleado {
 
     public ArrayList<Venta> getVentasEmpleado() {
         return ventasEmpleado;
+    }
+
+    public void setTotalVentasEmpleado(Float totalVentasEmpleado) {
+        this.totalVentasEmpleado = totalVentasEmpleado;
+    }
+
+    public Float getTotalVentasEmpleado() {
+        return totalVentasEmpleado;
     }
 }
