@@ -44,7 +44,7 @@ public class Presupuesto {
         Alquiler nuevoAlquiler = new Alquiler();
         setVehiculoAlquilado(vehiculo);
         setCant_dias(cantDias);
-        Double monto = vehiculo.calcularCosto();
+        Double monto = vehiculo.calcularCosto(cantDias);
         setMontoFinal(monto);
         nuevoAlquiler.setFechaInicio(LocalDate.now());
         nuevoAlquiler.setFechaFin(LocalDate.now().plusDays(cantDias));

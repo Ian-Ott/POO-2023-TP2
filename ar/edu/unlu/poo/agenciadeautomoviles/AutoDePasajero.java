@@ -12,8 +12,14 @@ public class AutoDePasajero extends Vehiculos{
     }
 
     @Override
-    public Double calcularCosto() {
-
-        return null;
+    public Double calcularCosto(int cantDias) {
+        Double monto = 0.0;
+        for (int j = 0; j < cantDias; j++){
+            monto += 3000.0;
+            for (int i = 0; i < getAsientos(); i++){
+                monto += 300.0;
+            }
+        }
+        return monto;
     }
 }

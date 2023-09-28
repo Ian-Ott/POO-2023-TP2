@@ -125,8 +125,12 @@ public class SistemaDeAgencia {
         }
     }
 
-    public void mostrarTodosLosAlquileres(){
-
+    public void mostrarMontoTodosLosAlquileres(){
+        Double montoTotal = 0.0;
+        for (int i = 0; i < alquileres.size(); i++){
+            montoTotal += alquileres.get(i).getSaldoAPagar();
+        }
+        System.out.println("El monto total de todos los alquileres generados en el sistema es de " + montoTotal);
     }
 
 }

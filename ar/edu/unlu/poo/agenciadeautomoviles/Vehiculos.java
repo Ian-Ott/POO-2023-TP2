@@ -18,8 +18,7 @@ public class Vehiculos {
         return patente;
     }
 
-    public Double calcularCosto(){
-
+    public Double calcularCosto(int cantDias){
         return null;
     }
 }

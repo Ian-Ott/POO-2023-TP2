@@ -9,8 +9,14 @@ public class Camiones extends Vehiculos{
     }
 
     @Override
-    public Double calcularCosto() {
-        super.calcularCosto();
-        return null;
+    public Double calcularCosto(int cantDias) {
+        Double monto = getCostoFijo();
+        if (cantDias > 30){
+            monto = 0.0;
+            for (int i = 0; i < cantDias; i++){
+                monto += 75000.0;
+            }
+        }
+        return monto;
     }
 }

@@ -12,8 +12,12 @@ public class CamionetasFlete extends Vehiculos{
     }
 
     @Override
-    public Double calcularCosto() {
-        super.calcularCosto();
-        return null;
+    public Double calcularCosto(int cantDias) {
+        Double monto = 0.0;
+        for (int i = 0; i < cantDias; i++){
+            monto += getPrecioBase();
+        }
+        monto += 600.0 * getPAT();
+        return monto;
     }
 }
