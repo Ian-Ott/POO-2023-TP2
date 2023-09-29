@@ -1,8 +1,13 @@
+import ar.edu.unlu.poo.academia.Academia;
+import ar.edu.unlu.poo.academia.CredencialAlumno;
+import ar.edu.unlu.poo.academia.Nivel;
 import ar.edu.unlu.poo.agencia.AgenciaTurismo;
 import ar.edu.unlu.poo.agencia.Clasificacion;
 import ar.edu.unlu.poo.club.ClubFutbol;
 import ar.edu.unlu.poo.club.Subscripciones;
+import ar.edu.unlu.poo.libro.BibliotecaTP1;
 
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,7 +24,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_2();
                 break;
             case 3:
-                //ejemplo_3();
+                ejemplo_3();
                 break;
             case 4:
                 //ejemplo_4();
@@ -152,6 +157,94 @@ public class ejemplos_ejerciciosMainTP2 {
         sunBeach.nueva_compra(false, "Pepito Morales", "34.783.436", "Polinesia Francesa", "Paquete Premium");
     }
 
+    public static void ejemplo_3(){
+        System.out.println("Ejemplos ejercicio 3: ");
+        System.out.println("Creo la academia...");
+        Academia academiaDanzas = new Academia();
+        System.out.println("Creo algunas displinas con sus diagramacones y algunos profesores...");
+        academiaDanzas.crearDisciplina("Tango", Nivel.INICIAL, "Lunes y viernes", "9:00 a 12:00", "Lorena", 3);
+        academiaDanzas.crearDisciplina("Bachata", Nivel.INTERMEDIO,"Martes y Jueves", "17:00 a 20:00", "Diego", 7);
+        academiaDanzas.crearDisciplina("Tango", Nivel.INTERMEDIO, "Martes y Jueves", "18:00 a 21:00", "Lorena",2);
+        academiaDanzas.crearDisciplina("Tango", Nivel.AVANZADO, "Viernes y Sabado", "8:00 a 11:00", "Diego", 5);
+
+
+        System.out.println("\nAhora inscribo a 10 alumnos a las distintas diagramaciones...");
+        CredencialAlumno credencialJazmin = academiaDanzas.inscripcion(false, "Jazmin Morales", "34.656.785","11 2654-8879", "Tango", null,Nivel.INICIAL);
+        CredencialAlumno credencialPablo = academiaDanzas.inscripcion(false, "Pablo Martinez", "45.353.275","11 5633-7961", "Tango", null,Nivel.INICIAL);
+        CredencialAlumno credencialAlberto = academiaDanzas.inscripcion(false, "Alberto Dominguez", "22.566.454","11 1121-3419", "Bachata", null,Nivel.INTERMEDIO);
+        CredencialAlumno credencialVioleta = academiaDanzas.inscripcion(false, "Violeta Guerra", "33.596.950","11 9564-1274", "Tango", null,Nivel.INTERMEDIO);
+        CredencialAlumno credencialJonatan = academiaDanzas.inscripcion(false, "Jonatan Prada", "37.317.299","11 9044-2667", "Tango", null,Nivel.AVANZADO);
+        CredencialAlumno credencialMirian = academiaDanzas.inscripcion(false, "Mirian Cabrera", "40.840.979","11 8506-7702", "Tango", null,Nivel.INTERMEDIO);
+        CredencialAlumno credencialMaximo = academiaDanzas.inscripcion(false, "Maximo Nogales", "39.670.455","11 8784-2595", "Tango", null,Nivel.AVANZADO);
+        CredencialAlumno credencialCamila = academiaDanzas.inscripcion(false, "Camila Perez", "36.719.459","11 7521-6401", "Tango", null,Nivel.INICIAL);
+        CredencialAlumno credencialCamilo = academiaDanzas.inscripcion(false, "Camilo Caballa", "29.731.540","11 2012-7823", "Tango", null,Nivel.INICIAL);
+        CredencialAlumno credencialMicaela = academiaDanzas.inscripcion(false, "Micaela Paez", "40.150.672","11 4141-6942", "Bachata", null,Nivel.INTERMEDIO);
+        credencialJonatan = academiaDanzas.inscripcion(true, "Jonatan Prada", "37.317.299","11 9044-2667", "Bachata", credencialJonatan,Nivel.INTERMEDIO);
+        credencialPablo = academiaDanzas.inscripcion(true, "Pablo Martinez", "45.353.275","11 5633-7961", "Bachata", credencialPablo,Nivel.INTERMEDIO);
+
+        System.out.println("\nhago que algunos alumnos se registren para sus clases...");
+        academiaDanzas.registrarse(credencialJazmin, "Tango", Nivel.INICIAL, LocalDate.of(2023,9,4));
+        academiaDanzas.registrarse(credencialAlberto, "Bachata", Nivel.INTERMEDIO, LocalDate.of(2023,9,5));
+        academiaDanzas.registrarse(credencialVioleta, "Tango", Nivel.INTERMEDIO, LocalDate.of(2023,9,12));
+        academiaDanzas.registrarse(credencialJazmin, "Tango", Nivel.INICIAL, LocalDate.of(2023,9,4));
+        academiaDanzas.registrarse(credencialPablo, "Bachata", Nivel.INTERMEDIO, LocalDate.of(2023,9,5));
+        academiaDanzas.registrarse(credencialMirian, "Tango", Nivel.INTERMEDIO, LocalDate.of(2023,9,12));
+        academiaDanzas.registrarse(credencialMaximo, "Tango", Nivel.AVANZADO, LocalDate.of(2023,9,29));
+        academiaDanzas.registrarse(credencialCamila, "Tango", Nivel.INICIAL, LocalDate.of(2023,9,4));
+        academiaDanzas.registrarse(credencialCamilo, "Tango", Nivel.INICIAL, LocalDate.of(2023,9,4));
+        academiaDanzas.registrarse(credencialMicaela, "Bachata", Nivel.INTERMEDIO, LocalDate.of(2023,9,5));
+        academiaDanzas.registrarse(credencialJonatan, "Tango", Nivel.AVANZADO, LocalDate.of(2023,9,29));
+        academiaDanzas.registrarse(credencialMaximo, "Tango", Nivel.AVANZADO, LocalDate.of(2023,9,30));
+        academiaDanzas.registrarse(credencialAlberto, "Bachata", Nivel.INTERMEDIO, LocalDate.of(2023,9,5));
+        academiaDanzas.registrarse(credencialPablo, "Bachata", Nivel.INTERMEDIO, LocalDate.of(2023,10,10));
+        academiaDanzas.registrarse(credencialMirian, "Tango", Nivel.INTERMEDIO, LocalDate.of(2023,9,14));
+        academiaDanzas.registrarse(credencialAlberto, "Bachata", Nivel.INTERMEDIO, LocalDate.of(2023,9,7));
+        academiaDanzas.registrarse(credencialMaximo, "Tango", Nivel.AVANZADO, LocalDate.of(2023,10,6));
+        academiaDanzas.registrarse(credencialCamila, "Tango", Nivel.INICIAL, LocalDate.of(2023,9,3));
+        academiaDanzas.registrarse(credencialJazmin, "Tango", Nivel.INICIAL, LocalDate.of(2023,9,3));
+        academiaDanzas.registrarse(credencialPablo, "Bachata", Nivel.INTERMEDIO, LocalDate.of(2023,9,7));
+
+        System.out.println("Muestro el listado del mes de septiembre para cada profesor...");
+        academiaDanzas.listadoAlumnosAsistidos("Diego", Month.SEPTEMBER);
+        academiaDanzas.listadoAlumnosAsistidos("Lorena", Month.SEPTEMBER);
+
+        System.out.println("Muestro el reporte de la disciplina con mayor ingreso...");
+        academiaDanzas.reporteMayorIngreso();
+    }
+
+    /*private static void ejemplo_8(){
+        System.out.println("\nEjemplo de Biblioteca: ");
+        BibliotecaTP1 biblioteca = new BibliotecaTP1();
+
+        System.out.println("\nagrego libros a la biblioteca... ");
+        biblioteca.agregar_libro("La odisea", "Homero", 448, 10);
+        biblioteca.agregar_libro("Frankenstein", "Mary Shelley", 304, 1);
+
+        System.out.println("\nContenido de la biblioteca: " + biblioteca);
+
+        System.out.println("\nPido prestado dos libros de la odisea: ");
+        biblioteca.prestar_libro("La odisea", "Homero");
+        biblioteca.prestar_libro("La odisea", "Homero");
+
+        System.out.println("\nPido prestado un libro de frankestein: ");
+        biblioteca.prestar_libro("Frankenstein", "Mary Shelley");
+
+        System.out.println("\nCompruebo los prestamos realizados con el libro la odisea: " + biblioteca.prestamosRealizados("La odisea", "Homero"));
+
+        System.out.println("\nComparo la cantidad de paginas del libro la odisea con el de frankestein: ");
+        if (biblioteca.libro1_tieneMasPags("La odisea" , "Homero", "Frankenstein", "Mary Shelley")){
+            System.out.println("La odisea tiene mas cantidad de paginas que Frankenstein");
+        }else {
+            System.out.println("Frankenstein tiene mas cantidad de paginas que frankenstein");
+        }
+        System.out.println("\nPido prestado un libro mas de la odisea y compruebo la cantidad total de prestamos que realizo la biblioteca: ");
+        biblioteca.prestar_libro("La odisea", "Homero");
+        System.out.println("\nLa cantidad de prestamos totales que realizo la biblioteca fue de " + biblioteca.total_prestamos());
+
+        System.out.println("\nMuestro como quedo la descripcion de La odisea: ");
+        biblioteca.mostrar_descripcion("La odisea", "Homero");
+
+    } este es un ejemplo del ejercicio 6 del tp1*/
 
 
 }

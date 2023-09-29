@@ -1,5 +1,7 @@
 package ar.edu.unlu.poo.academia;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 
 public class Academia {
@@ -53,14 +55,14 @@ public class Academia {
         }
     }
 
-    public  void registrarse (CredencialAlumno credencial, String disciplina, Nivel nivel){
-        secretaria.registrar_asistencia(credencial, disciplina, nivel);
+    public  void registrarse (CredencialAlumno credencial, String disciplina, Nivel nivel, LocalDate fecha){
+        secretaria.registrar_asistencia(credencial, disciplina, nivel, fecha);
     }
 
     public void reporteMayorIngreso(){
         String displinaMayorI = "";
         double cantidadMayorIngreso = 0;
-        //calcular ingresos aca?
+        calcularIngresosTotales();
         ArrayList<Disciplinas> listaDisplinasAux = secretaria.getListaDisciplinas();
         for (int i = 0; i < listaDisplinasAux.size(); i++){
             if (listaDisplinasAux.get(i).getIngresosTotalesDisciplina() > cantidadMayorIngreso) {
@@ -68,21 +70,45 @@ public class Academia {
                 cantidadMayorIngreso = listaDisplinasAux.get(i).getIngresosTotalesDisciplina();
             }
         }
-        System.out.println("La displina con mayor ingresos es: " + displinaMayorI + "con " + cantidadMayorIngreso + "$ en ingresos");
+        System.out.println("La displina con mayor ingresos es: " + displinaMayorI + " con " + cantidadMayorIngreso + "$ en ingresos totales");
+    }
+
+    private void calcularIngresosTotales() {
+        Disciplinas disciplinaAux;
+        Asistencia asistenciaAux;
+        for (int i = 0; i < secretaria.getListaDisciplinas().size(); i++){
+            disciplinaAux = secretaria.getListaDisciplinas().get(i);
+            for (int j = 0;j < secretaria.getAsistenciasAlumno().size();j++ ){
+                asistenciaAux = secretaria.getAsistenciasAlumno().get(j);
+                if (asistenciaAux.getDisciplina().equals(disciplinaAux.getNombreDisciplina())){
+                    secretaria.getListaDisciplinas().get(i).sumarIngresosTotalesDisciplina(10.0 * asistenciaAux.getFechasAsistidas().size());
+                    //le sumo 10 por la cantidad de asistencias del alumno en esa disciplina (10 * cant asistencias)
+                }
+            }
+        }
     }
 
 
-    public void listadoAlumnosAsistidos(String profe){
-        System.out.println("Listado de alumnos que asistieron a la clase del profesor " + profe + ": ");
-        ArrayList<Asistencia> asistenciasAux = secretaria.getAsistenciasAlumno();
+    public void listadoAlumnosAsistidos(String profe, Month mes){
+        System.out.println("\nListado de alumnos que asistieron a la clase del profesor " + profe + ": ");
+        Asistencia asistenciaAux;
+        LocalDate fechaAux;
         double importeTotal = 0;
-        for (int i = 0; i < asistenciasAux.size(); i++){
-            if (asistenciasAux.get(i).getComisionElegida().getProfesor().equals(profe)){
-                importeTotal += (asistenciasAux.get(i).getCant_asistencias() * 10);
-                System.out.println("El alumno " + asistenciasAux.get(i).getAlumno().getNombre_apellido() + " Asistio a las clases de " + asistenciasAux.get(i).getDisciplina() +
-                        " con un total de " + asistenciasAux.get(i).getCant_asistencias() + " asistencias");
+        for (int i = 0; i < secretaria.getAsistenciasAlumno().size(); i++){
+            asistenciaAux = secretaria.getAsistenciasAlumno().get(i);
+            if (asistenciaAux.getComisionElegida().getProfesor().equals(profe)){
+                System.out.println("\nAlumno: " + asistenciaAux.getAlumno().getNombre_apellido() + " | Disciplina: " + asistenciaAux.getDisciplina());
+                System.out.println("Fechas Asistidas este mes: \n");
+                for (int j = 0; j < asistenciaAux.getFechasAsistidas().size();j++){
+                    fechaAux = asistenciaAux.getFechasAsistidas().get(j);
+                    if (mes.equals(fechaAux.getMonth())){
+                        System.out.print(fechaAux + " | ");
+                        importeTotal += 10;
+                    }
+                }
+                System.out.println("\n_________________________________________________________________________");
             }
         }
-        System.out.println("El profesor " + profe + "va a cobrar" + importeTotal + "$");
+        System.out.println("El/la profesor/a " + profe + " va a cobrar " + importeTotal + "$");
     }
 }

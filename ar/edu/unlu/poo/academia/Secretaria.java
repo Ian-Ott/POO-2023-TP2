@@ -1,5 +1,6 @@
 package ar.edu.unlu.poo.academia;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Secretaria {
@@ -71,12 +72,14 @@ public class Secretaria {
         return credencial;
     }
 
-    public void registrar_asistencia(CredencialAlumno credencial, String disciplina, Nivel nivel) {
+    public void registrar_asistencia(CredencialAlumno credencial, String disciplina, Nivel nivel, LocalDate fecha) {
+        Asistencia asistenciaAux;
         for (int i = 0; i < asistenciasAlumno.size(); i++){
-            if (asistenciasAlumno.get(i).getAlumno().getNombre_apellido().equals(credencial.getNombre_apellido())){
-                if (asistenciasAlumno.get(i).getDisciplina().equals(disciplina)){
-                    if (asistenciasAlumno.get(i).getComisionElegida().getNivelDisciplina().equals(nivel)){
-                        asistenciasAlumno.get(i).sumarAsistencia();
+            asistenciaAux = asistenciasAlumno.get(i);
+            if (asistenciaAux.getAlumno().getNombre_apellido().equals(credencial.getNombre_apellido())){
+                if (asistenciaAux.getDisciplina().equals(disciplina)){
+                    if (asistenciaAux.getComisionElegida().getNivelDisciplina().equals(nivel)){
+                        asistenciaAux.agregarFechasAsistida(fecha);
                     }
                 }
             }

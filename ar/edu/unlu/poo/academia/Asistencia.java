@@ -1,10 +1,13 @@
 package ar.edu.unlu.poo.academia;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 public class Asistencia {
     //La asistencia contiene la informacion sobre las asistencias del alumno en la comision de su displina
     private String disciplina;
     private Diagramaciones comisionElegida;
-    private int cant_asistencias = 0;
+    private ArrayList<LocalDate> fechasAsistidas = new ArrayList<>();
     private CredencialAlumno alumno;
 
     public void setAlumno(CredencialAlumno alumno) {
@@ -15,12 +18,12 @@ public class Asistencia {
         return alumno;
     }
 
-    public void sumarAsistencia() {
-        this.cant_asistencias = this.cant_asistencias + 1;
+    public void agregarFechasAsistida(LocalDate fechasAsistida) {
+        this.fechasAsistidas.add(fechasAsistida);
     }
 
-    public int getCant_asistencias() {
-        return cant_asistencias;
+    public ArrayList<LocalDate> getFechasAsistidas() {
+        return fechasAsistidas;
     }
 
     public void setDisciplina(String disciplina) {
