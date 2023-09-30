@@ -4,7 +4,7 @@ public class Cliente {
     private String nombre_apellido;
     private String DNI;
     private String patente;
-    private double totalGastado;
+    private double totalGastado = 0.0d;
 
     public void setDNI(String DNI) {
         this.DNI = DNI;
