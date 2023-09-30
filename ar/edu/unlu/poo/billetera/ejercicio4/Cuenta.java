@@ -1,4 +1,4 @@
-package ar.edu.unlu.poo.billetera;
+package ar.edu.unlu.poo.billetera.ejercicio4;
 
 import java.time.LocalDate;
 public class Cuenta {

@@ -1,4 +1,8 @@
-package ar.edu.unlu.poo.billetera;
+package ar.edu.unlu.poo.billetera.ejercicio4;
+
+import ar.edu.unlu.poo.billetera.ejercicio4.Cuenta;
+import ar.edu.unlu.poo.billetera.ejercicio4.CuentaCredito;
+import ar.edu.unlu.poo.billetera.ejercicio4.Usuario;
 
 import java.util.ArrayList;
 

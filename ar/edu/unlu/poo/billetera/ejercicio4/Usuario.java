@@ -1,4 +1,4 @@
-package ar.edu.unlu.poo.billetera;
+package ar.edu.unlu.poo.billetera.ejercicio4;
 
 public class Usuario {
     private String nombreUsuario;
