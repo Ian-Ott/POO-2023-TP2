@@ -223,14 +223,12 @@ public class ModuloInformes {
    }
 
     private void insertarOrdenMayorLitrosSurtidor(List<Expendedor> listaSurtidores, Expendedor expendedor) {
-        boolean agregado = false;
         if (listaSurtidores.isEmpty()){
             listaSurtidores.add(expendedor);
         }else{
         for (int i = 0; i < listaSurtidores.size(); i++){
             if (expendedor.getTipoCombustible().getTotalLitros() > listaSurtidores.get(i).getTipoCombustible().getTotalLitros()){
                 listaSurtidores.add(i,expendedor);
-                agregado = true;
                 return;
             }
         }
@@ -276,7 +274,7 @@ public class ModuloInformes {
     private void calcularTotalesEmpleado() {
         double totalVentasEmpleado;
         for (int i = 0; i < empleados.size(); i++){
-            totalVentasEmpleado = 0F;
+            totalVentasEmpleado = 0.0d;
             for (int j = 0; j < listaVentas.size(); j++){
                 if (listaVentas.get(j).getPlayeroAfectado().getDNI().equals(empleados.get(i).getDNI())){
                     totalVentasEmpleado += listaVentas.get(j).getImporteTotal();
