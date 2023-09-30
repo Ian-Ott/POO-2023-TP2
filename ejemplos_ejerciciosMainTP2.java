@@ -3,10 +3,10 @@ import ar.edu.unlu.poo.academia.CredencialAlumno;
 import ar.edu.unlu.poo.academia.Nivel;
 import ar.edu.unlu.poo.agencia.AgenciaTurismo;
 import ar.edu.unlu.poo.agencia.Clasificacion;
-import ar.edu.unlu.poo.billetera.BilleteraVirtual;
+import ar.edu.unlu.poo.billetera.ejercicio4.BilleteraVirtual;
+import ar.edu.unlu.poo.billetera.ejercicio5.BilleteraVirtualV2;
 import ar.edu.unlu.poo.club.ClubFutbol;
 import ar.edu.unlu.poo.club.Subscripciones;
-import ar.edu.unlu.poo.libro.BibliotecaTP1;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -31,7 +31,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_4();
                 break;
             case 5:
-                //ejemplo_5();
+                ejemplo_5();
                 break;
             case 6:
                 //ejemplo_6();
@@ -100,7 +100,7 @@ public class ejemplos_ejerciciosMainTP2 {
     }
 
     public static void ejemplo_1(){
-        System.out.println("Ejemplos del ejercicio 1:");
+        System.out.println("\nEjemplos del ejercicio 1:");
         System.out.println("Creo al objeto Club de futbol...");
         ClubFutbol nuevo_club = new ClubFutbol();
         System.out.println("inscribo a 10 nuevos socios...");
@@ -128,7 +128,7 @@ public class ejemplos_ejerciciosMainTP2 {
         nuevo_club.mostrarPorOrdenSub();
     }
     public static void ejemplo_2(){
-        System.out.println("Ejemplos del ejercicio 2: ");
+        System.out.println("\nEjemplos del ejercicio 2: ");
         System.out.println("Creo a la agencia de turismo...");
         AgenciaTurismo sunBeach = new AgenciaTurismo();
         System.out.println("agrego algunos proveedores...");
@@ -160,7 +160,7 @@ public class ejemplos_ejerciciosMainTP2 {
     }
 
     public static void ejemplo_3(){
-        System.out.println("Ejemplos ejercicio 3: ");
+        System.out.println("\nEjemplos del ejercicio 3: ");
         System.out.println("Creo la academia...");
         Academia academiaDanzas = new Academia();
         System.out.println("Creo algunas displinas con sus diagramacones y algunos profesores...");
@@ -215,6 +215,7 @@ public class ejemplos_ejerciciosMainTP2 {
     }
 
     public static void ejemplo_4(){
+        System.out.println("\nEjemplos del ejercicio 4:");
         System.out.println("\nCreo primero la billetera virtual...");
         BilleteraVirtual billeteraEjemplo = new BilleteraVirtual();
         System.out.println("Creo la cuenta de dos usuarios diferentes uno con cuenta credito y otro sin...");
@@ -224,19 +225,19 @@ public class ejemplos_ejerciciosMainTP2 {
         billeteraEjemplo.mostrarEstadoCuenta("Jazmin", "12345678");
         System.out.println("\nMuestro el estado de la cuenta del usuario Pepe...");
         billeteraEjemplo.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
-        System.out.println("\nLa usuario Jazmin ahora va a comprar con su cuenta credito...");
+        System.out.println("\nLa usuario Jazmin ahora va a comprar con su cuenta credito ($1000)...");
         if (billeteraEjemplo.comprarUsandoCuentaCredito("Jazmin", "12345678", 1000.0d)){
             System.out.println("Compra Exitosa!!!");
         }
         System.out.println("\nMuestro el estado de Jazmin...");
         billeteraEjemplo.mostrarEstadoCuenta("Jazmin", "12345678");
-        System.out.println("\nAhora realizo un pago de la compra realizada...");
+        System.out.println("\nAhora realizo un pago de la compra realizada(paga $900)...");
         if (billeteraEjemplo.pagarUsandoCuentaCredito("Jazmin","12345678", 900.0d, 0)){
             System.out.println("Pago realizado!!");
         }
         System.out.println("\nMuestro el estado para ver como quedo el saldo deudor...");
         billeteraEjemplo.mostrarEstadoCuenta("Jazmin", "12345678");
-        System.out.println("\nAhora el usuario Pepe va a hacer un gasto...");
+        System.out.println("\nAhora el usuario Pepe va a hacer un gasto ($2000)...");
         billeteraEjemplo.realizarGastoCuenta("Pepe", "ContraseniaSegura", 2000.0d);
         System.out.println("\nComo ya sabe que va a girar en descubierto vuelve a intentar hacer el gasto igual...");
         if (billeteraEjemplo.realizarGastoYGirarCuenta("Pepe", "ContraseniaSegura", 2000.0d)){
@@ -244,13 +245,13 @@ public class ejemplos_ejerciciosMainTP2 {
         }
         System.out.println("\nMuestro el estado de Pepe...");
         billeteraEjemplo.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
-        System.out.println("\nAhora pruebo que deposite un monto...");
+        System.out.println("\nAhora pruebo que deposite un monto de $1500...");
         billeteraEjemplo.depositarMontoCuenta("Pepe", "ContraseniaSegura",1500.0d);
         System.out.println("\nMuestro su estado...");
         billeteraEjemplo.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
-        System.out.println("\nAhora pruebo a invertir un poco del saldo...");
+        System.out.println("\nAhora pruebo a invertir un poco del saldo ($900)...");
         if (billeteraEjemplo.invertirMontoCuenta("Pepe", "ContraseniaSegura",900.0d)){
-            System.out.println("Se invirtio el monto correctamente!!!");
+            System.out.println("Se invertio el monto correctamente!!!");
         }
         System.out.println("Muestro su estado...");
         billeteraEjemplo.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
@@ -258,6 +259,51 @@ public class ejemplos_ejerciciosMainTP2 {
         if (!billeteraEjemplo.recuperarMontoInvertidoCuenta("Pepe", "ContraseniaSegura")){
             System.out.println("No se puede recuperar el monto porque no han pasado la cantidad de dias necesarios");
         }
+    }
+
+    public static void ejemplo_5(){
+        System.out.println("\nEjemplos del ejercicio 5:");
+        System.out.println("Creo la billetera virtual con las nuevas implementaciones...");
+        BilleteraVirtualV2 billeteraEjemploV2 = new BilleteraVirtualV2();
+        System.out.println("\nCreo un unico usuario para probar lo nuevo sin cuenta credito ya que no hay nuevos metodos en cuenta credito aparte de los que tiene en el anterior ejercicio");
+        billeteraEjemploV2.crear_cuenta("Jazmin", "12345678", 2000.0d,1000.0d,null,false);
+        System.out.println("\nMuestro su estado...");
+        billeteraEjemploV2.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nHago que invierta una parte de su saldo ($1500)...");
+        if (billeteraEjemploV2.invertirMontoCuenta("Jazmin", "12345678", 1500)){
+            System.out.println("Se invirtio correctamente!!!");
+        }
+        System.out.println("\nMuestro su estado...");
+        billeteraEjemploV2.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nIntento realizar un gasto mayor al sueldo ($3000)...");
+        billeteraEjemploV2.realizarGastoCuenta("Jazmin", "12345678",2500.0d);
+        System.out.println("\nComo tiene una inversion se puede reducir el giro descubierto por lo que hago que gaste igual...");
+        if (billeteraEjemploV2.realizarGastoYGirarCuenta("Jazmin", "12345678",2500.0d)){
+            System.out.println("Se realizo el gasto correctamente!!!");
+        }
+        System.out.println("\nMuestro su estado...");
+        billeteraEjemploV2.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nDeposito $1500 para tener saldo en la cuenta...");
+        billeteraEjemploV2.depositarMontoCuenta("Jazmin", "12345678",1500.0d);
+        System.out.println("\nMuestro el estado...");
+        billeteraEjemploV2.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nInvierto $500 de su saldo...");
+        if (billeteraEjemploV2.invertirMontoCuenta("Jazmin", "12345678",500.0d)){
+            System.out.println("Se invertio correctamente!!!");
+        }
+        System.out.println("\nMuestro su estado...");
+        billeteraEjemploV2.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nAhora cancelo la inversion");
+        System.out.println("AVISO: como la inversion no fue hace 30 dias nisiquiera le va a dar un interes del 30% pero esa opcion esta implementada en el metodo");
+        if (billeteraEjemploV2.cancelarInversionCuenta("Jazmin", "12345678")){
+            System.out.println("Se cancelo correctamente la inversion!!!");
+        }
+        System.out.println("\nMuestro el estado...");
+        billeteraEjemploV2.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nPregunta: ¿Se podría mejorar el diseño en términos de encapsulamiento/contrato?");
+        System.out.println("Respuesta: En terminos de encapsulamiento no hay forma de mejorarlo ya que el sistema sigue manteniendo el encapsulamiento aun con los cambios implementados");
+        System.out.println("\nPregunta: ¿Qué pasa con la cohesión y el acoplamiento?");
+        System.out.println("Respuesta: Lo que pasa con la cohesion y el acoplamiento es que se mantiene igual a la del anterior ejercicio\nya que solo se agregaron un par de metodos a cada clase que lo necesitaba");
     }
     /*private static void ejemplo_8(){
         System.out.println("\nEjemplo de Biblioteca: ");
