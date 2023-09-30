@@ -22,8 +22,14 @@ public class CuentaCredito {
      * @return boolean: true si la compra fue existosa, false en caso contrario.
      */
     public boolean comprar(double monto) {
-        // TODO Implementar ..
-        return true;
+        // TODO Implementar ... (Ya implementado)
+        boolean resultado = false;
+        if (getMontoDisponibleParaCompras() >= monto){
+            resultado = true;
+            Double nueva_compra = monto;
+            compras.add(nueva_compra);
+        }
+        return resultado;
     }
 
     /**
@@ -36,8 +42,16 @@ public class CuentaCredito {
      * @return
      */
     public boolean pagar(double monto, int indiceCompra) {
-        // TODO implementar ...
-        return true;
+        // TODO implementar ... (Ya implementado)
+        boolean resultado = false;
+        if (monto <= getSaldoDeudorCompra(indiceCompra)){
+            resultado = true;
+            double nuevo_monto = compras.get(indiceCompra) - monto;
+            compras.set(indiceCompra,nuevo_monto);
+            pagado.add(monto);
+            limite += monto;
+        }
+        return resultado;
     }
 
     /**
@@ -47,8 +61,8 @@ public class CuentaCredito {
      * @return
      */
     public double getSaldoDeudorCompra(int indiceCompra) {
-        // TODO falta implementar ..
-        return 0.0d;
+        // TODO falta implementar ... (Ya implementado)
+        return compras.get(indiceCompra) + (compras.get(indiceCompra) * 0.5);
     }
 
     /**
@@ -56,8 +70,12 @@ public class CuentaCredito {
      * @return double
      */
     public double getSaldoDeudor() {
-        // TODO falta implementar...
-        return 0.0d;
+        // TODO falta implementar... (Ya implementado)
+        double total = 0.0d;
+        for (int i = 0; i < compras.size(); i++){
+            total += getSaldoDeudorCompra(i);
+        }
+        return total;
     }
 
     /**
@@ -66,8 +84,12 @@ public class CuentaCredito {
      * @return double: el saldo disponible para realizar compras.
      */
     public double getMontoDisponibleParaCompras() {
-        // TODO falta implementar ...
-        return 0.0d;
+        // TODO falta implementar ... (Ya implementado)
+        double montoDisponible = limite;
+        for (int i = 0; i < compras.size(); i++){
+            montoDisponible -= getSaldoDeudorCompra(i);
+        }
+        return montoDisponible;
     }
 
 

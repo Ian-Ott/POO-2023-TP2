@@ -50,7 +50,13 @@ public class Cuenta {
      * @param monto
      */
     public void depositar(double monto) {
-        // TODO Implementar....
+        // TODO Implementar.... (Ya implementado)
+        Double montoActual = monto;
+        if (giroDescubierto != 0){
+            montoActual -= giroDescubierto;
+            giroDescubierto -= monto;
+        }
+        saldo += montoActual;
     }
 
     /**
@@ -64,8 +70,14 @@ public class Cuenta {
      * @return
      */
     public boolean invertir(double monto) {
-        // TODO Implementar ...
-        return true;
+        // TODO Implementar ... (Ya implementado)
+        boolean resultado = false;
+        if (saldo >= monto && saldoInvertido != 0){
+            resultado = true;
+            saldoInvertido += monto;
+            fechaInversion = LocalDate.now();
+        }
+        return resultado;
     }
 
     /**
@@ -74,8 +86,14 @@ public class Cuenta {
      * @return
      */
     public boolean recuperarInversion() {
-        // TODO Implementar
-        return true;
+        // TODO Implementar ... (Ya implementado)
+        boolean resultado = false;
+        if (fechaInversion.plusDays((long) PLAZO_DIAS_INVERSION).isBefore(LocalDate.now())){
+            resultado = true;
+            saldo += saldoInvertido * INTERES_POR_INVERSION;
+            saldoInvertido = 0.0d;
+        }
+        return resultado;
     }
 
     public double getSaldo() {

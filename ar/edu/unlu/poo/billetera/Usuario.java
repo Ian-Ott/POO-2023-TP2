@@ -1,16 +1,22 @@
 package ar.edu.unlu.poo.billetera;
 
 public class Usuario {
+    private String nombreUsuario;
+    private String contrasenia;
+    //puse como atributos al nombre de usuario y contrasenia para no devolverle el tipo Usuario completo al sistema
+    // y ademas para diferenciar las cuentas de los usuarios
     private Cuenta cuenta;
     private CuentaCredito cuentaCredito;
 
-    public Usuario(Cuenta cuenta, CuentaCredito cuentaCredito) {
+    public Usuario(String nombreUsuario, String contrasenia,Cuenta cuenta, CuentaCredito cuentaCredito) {
+        this.nombreUsuario = nombreUsuario;
+        this.contrasenia = contrasenia;
         this.cuenta = cuenta;
         this.cuentaCredito = cuentaCredito;
     }
 
-    public Usuario(Cuenta cuenta) {
-        this(cuenta, null);
+    public Usuario(String nombreUsuario, String contrasenia, Cuenta cuenta) {
+        this(nombreUsuario, contrasenia, cuenta, null);
     }
 
     /**
@@ -58,6 +64,23 @@ public class Usuario {
         return this.cuenta.gastar(monto);
     }
 
+    public void depositarMonto(double monto){this.cuenta.depositar(monto);}
+
+    public boolean invertirMonto(double monto){return this.cuenta.invertir(monto);}
+    public boolean recuperarMonto(){return this.cuenta.recuperarInversion();}
+
     // TODO de aca para abajo falta implementar todas las operaciones posibles sobre la cuenta credito.
 
+    public boolean comprarConCuentaCredito(double monto){
+        return this.cuentaCredito.comprar(monto);
+    }
+    public boolean pagarConCuentaCredito(double monto, int indiceCompra){return this.cuentaCredito.pagar(monto,indiceCompra);}
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
 }
