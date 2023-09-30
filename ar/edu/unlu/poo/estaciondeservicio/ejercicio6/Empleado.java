@@ -1,4 +1,6 @@
-package ar.edu.unlu.poo.estaciondeservicio;
+package ar.edu.unlu.poo.estaciondeservicio.ejercicio6;
+
+import ar.edu.unlu.poo.estaciondeservicio.ejercicio6.Venta;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package ar.edu.unlu.poo.estaciondeservicio;
+package ar.edu.unlu.poo.estaciondeservicio.ejercicio6;
 
 public class Combustible {
     private String nombre;

@@ -7,7 +7,7 @@ import ar.edu.unlu.poo.billetera.ejercicio4.BilleteraVirtual;
 import ar.edu.unlu.poo.billetera.ejercicio5.BilleteraVirtualV2;
 import ar.edu.unlu.poo.club.ClubFutbol;
 import ar.edu.unlu.poo.club.Subscripciones;
-import ar.edu.unlu.poo.estaciondeservicio.ModuloInformes;
+import ar.edu.unlu.poo.estaciondeservicio.ejercicio6.ModuloInformes;
 
 import java.time.LocalDate;
 import java.time.Month;
