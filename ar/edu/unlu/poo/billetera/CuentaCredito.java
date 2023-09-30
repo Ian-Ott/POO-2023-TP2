@@ -49,7 +49,6 @@ public class CuentaCredito {
             double nuevo_monto = compras.get(indiceCompra) - monto;
             compras.set(indiceCompra,nuevo_monto);
             pagado.add(monto);
-            limite += monto;
         }
         return resultado;
     }
@@ -86,8 +85,14 @@ public class CuentaCredito {
     public double getMontoDisponibleParaCompras() {
         // TODO falta implementar ... (Ya implementado)
         double montoDisponible = limite;
-        for (int i = 0; i < compras.size(); i++){
+        if (!compras.isEmpty()){
+            for (int i = 0; i < compras.size(); i++){
             montoDisponible -= getSaldoDeudorCompra(i);
+            }
+        }
+        if (montoDisponible < 0){
+            montoDisponible = 0;
+            //agrego esto para que no muestre el saldo como negativo por los intereses
         }
         return montoDisponible;
     }

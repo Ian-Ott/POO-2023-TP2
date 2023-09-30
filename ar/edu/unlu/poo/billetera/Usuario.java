@@ -35,8 +35,12 @@ public class Usuario {
         System.out.println("");
         System.out.println("--- Cuenta crédito ----");
         System.out.println("");
-        System.out.println("Disponible para compras: "+this.cuentaCredito.getMontoDisponibleParaCompras());
-        System.out.println("Saldo deudor: "+this.cuentaCredito.getSaldoDeudor());
+        if (cuentaCredito != null) {
+            System.out.println("Disponible para compras: " + this.cuentaCredito.getMontoDisponibleParaCompras());
+            System.out.println("Saldo deudor: " + this.cuentaCredito.getSaldoDeudor());
+            }else {
+            System.out.println("El usuario no tiene cuenta credito");
+        }
     }
 
     /**

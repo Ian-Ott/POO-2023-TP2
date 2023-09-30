@@ -3,6 +3,7 @@ import ar.edu.unlu.poo.academia.CredencialAlumno;
 import ar.edu.unlu.poo.academia.Nivel;
 import ar.edu.unlu.poo.agencia.AgenciaTurismo;
 import ar.edu.unlu.poo.agencia.Clasificacion;
+import ar.edu.unlu.poo.billetera.BilleteraVirtual;
 import ar.edu.unlu.poo.club.ClubFutbol;
 import ar.edu.unlu.poo.club.Subscripciones;
 import ar.edu.unlu.poo.libro.BibliotecaTP1;
@@ -27,7 +28,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_3();
                 break;
             case 4:
-                //ejemplo_4();
+                ejemplo_4();
                 break;
             case 5:
                 //ejemplo_5();
@@ -69,17 +70,18 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("1-Ejercicio 1 - Club de Futbol");
         System.out.println("2-Ejercicio 2 - Agencia de Turismo");
         System.out.println("3-Ejercicio 3 - Academia de Danzas");
-        System.out.println("4-Ejercicio 4 - ???");
+        System.out.println("4-Ejercicio 4 - Billetera Virtual");
         System.out.println("5-Ejercicio 5 - ???");
         System.out.println("6-Ejercicio 6 - Estacion de Servicio");
         System.out.println("7-Ejercicio 7 - ???");
         System.out.println("-Parte dos: Herencia y polimorfismo:");
-        System.out.println("8-Ejercicio 8 - ???");
-        System.out.println("9-Ejercicio 9 - ???");
-        System.out.println("10-Ejercicio 10 - ???");
-        System.out.println("11-Ejercicio 11 - ???");
+        System.out.println("8-Ejercicio 8 - Biblioteca V2");
+        System.out.println("9-Ejercicio 9 - Figuras Geometricas");
+        System.out.println("10-Ejercicio 10 - App Empleados");
+        System.out.println("11-Ejercicio 11 - Agencia de Vehiculos");
         System.out.println("12-Ejercicio 12 - ???");
         System.out.println("13-Ejercicio 13 - ???");
+        System.out.println("14-Ejercicio 14 - Agencia de Turismo V2");
         System.out.println("AVISO: VUELVA A EJECUTAR EL MAIN SI LUEGO QUIERE VER OTRO EJERCICIO");
     }
 
@@ -212,6 +214,51 @@ public class ejemplos_ejerciciosMainTP2 {
         academiaDanzas.reporteMayorIngreso();
     }
 
+    public static void ejemplo_4(){
+        System.out.println("\nCreo primero la billetera virtual...");
+        BilleteraVirtual billeteraEjemplo = new BilleteraVirtual();
+        System.out.println("Creo la cuenta de dos usuarios diferentes uno con cuenta credito y otro sin...");
+        billeteraEjemplo.crear_cuenta("Jazmin", "12345678", 3000.0d, 1000.0d, 1000.0d, true );
+        billeteraEjemplo.crear_cuenta("Pepe", "ContraseniaSegura", 1500.0d, 500.0d, null,false);
+        System.out.println("\nMuestro el estado de la cuenta del usuario Jazmin...");
+        billeteraEjemplo.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nMuestro el estado de la cuenta del usuario Pepe...");
+        billeteraEjemplo.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
+        System.out.println("\nLa usuario Jazmin ahora va a comprar con su cuenta credito...");
+        if (billeteraEjemplo.comprarUsandoCuentaCredito("Jazmin", "12345678", 1000.0d)){
+            System.out.println("Compra Exitosa!!!");
+        }
+        System.out.println("\nMuestro el estado de Jazmin...");
+        billeteraEjemplo.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nAhora realizo un pago de la compra realizada...");
+        if (billeteraEjemplo.pagarUsandoCuentaCredito("Jazmin","12345678", 900.0d, 0)){
+            System.out.println("Pago realizado!!");
+        }
+        System.out.println("\nMuestro el estado para ver como quedo el saldo deudor...");
+        billeteraEjemplo.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nAhora el usuario Pepe va a hacer un gasto...");
+        billeteraEjemplo.realizarGastoCuenta("Pepe", "ContraseniaSegura", 2000.0d);
+        System.out.println("\nComo ya sabe que va a girar en descubierto vuelve a intentar hacer el gasto igual...");
+        if (billeteraEjemplo.realizarGastoYGirarCuenta("Pepe", "ContraseniaSegura", 2000.0d)){
+            System.out.println("Se realizo el gasto correctamente!");
+        }
+        System.out.println("\nMuestro el estado de Pepe...");
+        billeteraEjemplo.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
+        System.out.println("\nAhora pruebo que deposite un monto...");
+        billeteraEjemplo.depositarMontoCuenta("Pepe", "ContraseniaSegura",1500.0d);
+        System.out.println("\nMuestro su estado...");
+        billeteraEjemplo.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
+        System.out.println("\nAhora pruebo a invertir un poco del saldo...");
+        if (billeteraEjemplo.invertirMontoCuenta("Pepe", "ContraseniaSegura",900.0d)){
+            System.out.println("Se invirtio el monto correctamente!!!");
+        }
+        System.out.println("Muestro su estado...");
+        billeteraEjemplo.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
+        System.out.println("\nPor ultimo pruebo a recuperar el monto de la inversion");
+        if (!billeteraEjemplo.recuperarMontoInvertidoCuenta("Pepe", "ContraseniaSegura")){
+            System.out.println("No se puede recuperar el monto porque no han pasado la cantidad de dias necesarios");
+        }
+    }
     /*private static void ejemplo_8(){
         System.out.println("\nEjemplo de Biblioteca: ");
         BibliotecaTP1 biblioteca = new BibliotecaTP1();

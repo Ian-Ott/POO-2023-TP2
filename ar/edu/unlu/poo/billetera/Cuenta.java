@@ -55,6 +55,10 @@ public class Cuenta {
         if (giroDescubierto != 0){
             montoActual -= giroDescubierto;
             giroDescubierto -= monto;
+            if (giroDescubierto < 0){
+                giroDescubierto = 0;
+                //si es menor a 0 lo pongo en 0 asi no queda en negativo el giro descubierto
+            }
         }
         saldo += montoActual;
     }
@@ -72,10 +76,11 @@ public class Cuenta {
     public boolean invertir(double monto) {
         // TODO Implementar ... (Ya implementado)
         boolean resultado = false;
-        if (saldo >= monto && saldoInvertido != 0){
+        if (saldo >= monto && saldoInvertido == 0){
             resultado = true;
             saldoInvertido += monto;
             fechaInversion = LocalDate.now();
+            saldo -= monto;
         }
         return resultado;
     }
@@ -88,12 +93,15 @@ public class Cuenta {
     public boolean recuperarInversion() {
         // TODO Implementar ... (Ya implementado)
         boolean resultado = false;
+        if (fechaInversion != null){
         if (fechaInversion.plusDays((long) PLAZO_DIAS_INVERSION).isBefore(LocalDate.now())){
             resultado = true;
             saldo += saldoInvertido * INTERES_POR_INVERSION;
             saldoInvertido = 0.0d;
         }
+        }
         return resultado;
+
     }
 
     public double getSaldo() {
