@@ -100,7 +100,12 @@ public class ModuloInformes {
     private void mostrarTop10(List<Cliente> listaClientes) {
         System.out.println("Top 10 clientes de la estacion de servicio: ");
         for (int i = 0; i < 10; i++){
-            System.out.println((i + 1) + "- " + "nombre y apellido: " + listaClientes.get(i).getNombre_apellido() + " | DNI: " + listaClientes.get(i).getDNI() + " | Patente: " + listaClientes.get(i).getPatente() + " | Total gastado: " + listaClientes.get(i).getTotalGastado());
+            if (listaClientes.get(i).getTotalGastado() != 0){
+                System.out.println((i + 1) + "- " + "nombre y apellido: " + listaClientes.get(i).getNombre_apellido() + " | DNI: " + listaClientes.get(i).getDNI() + " | Patente: " + listaClientes.get(i).getPatente() + " | Total gastado: " + listaClientes.get(i).getTotalGastado());
+            }else {
+                System.out.println("\nNo hay mas clientes que hayan comprado este mes...");
+                return;
+            }
         }
     }
 
