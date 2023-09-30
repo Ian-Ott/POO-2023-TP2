@@ -4,7 +4,7 @@ public class Cliente {
     private String nombre_apellido;
     private String DNI;
     private String patente;
-    private Float totalGastado;
+    private double totalGastado;
 
     public void setDNI(String DNI) {
         this.DNI = DNI;
@@ -30,11 +30,11 @@ public class Cliente {
         return patente;
     }
 
-    public void setTotalGastado(Float totalGastado) {
+    public void setTotalGastado(double totalGastado) {
         this.totalGastado = totalGastado;
     }
 
-    public Float getTotalGastado() {
+    public double getTotalGastado() {
         return totalGastado;
     }
 }

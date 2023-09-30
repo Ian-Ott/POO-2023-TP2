@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 
 public class Venta {
     private LocalDateTime FechaHora;
-    private Float ImporteTotal;
-    private Float LitrosExpendidos;
+    private double ImporteTotal;
+    private double LitrosExpendidos;
     //podria sacar el de litros
     private Cliente Comprador;
     private Empleado playeroAfectado;
@@ -19,19 +19,19 @@ public class Venta {
         return FechaHora;
     }
 
-    public void setImporteTotal(Float importeTotal) {
+    public void setImporteTotal(double importeTotal) {
         ImporteTotal = importeTotal;
     }
 
-    public Float getImporteTotal() {
+    public double getImporteTotal() {
         return ImporteTotal;
     }
 
-    public void setLitrosExpendidos(Float litrosExpendidos) {
+    public void setLitrosExpendidos(double litrosExpendidos) {
         LitrosExpendidos = litrosExpendidos;
     }
 
-    public Float getLitrosExpendidos() {
+    public double getLitrosExpendidos() {
         return LitrosExpendidos;
     }
 

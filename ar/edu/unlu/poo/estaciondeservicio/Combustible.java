@@ -2,9 +2,9 @@ package ar.edu.unlu.poo.estaciondeservicio;
 
 public class Combustible {
     private String nombre;
-    private Float precioVenta;
-    private Float totalVentasXcombustible = 0F;
-    private Float totalLitros = 0F;
+    private double precioVenta;
+    private double totalVentasXcombustible = 0F;
+    private double totalLitros = 0F;
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -14,29 +14,29 @@ public class Combustible {
         return nombre;
     }
 
-    public void setPrecioVenta(Float precioVenta) {
+    public void setPrecioVenta(double precioVenta) {
         this.precioVenta = precioVenta;
     }
 
-    public Float getPrecioVenta() {
+    public double getPrecioVenta() {
         return precioVenta;
     }
 
 
 
-    public void sumarTotalVentasXcombustible(Float ventaCombustible) {
+    public void sumarTotalVentasXcombustible(double ventaCombustible) {
         this.totalVentasXcombustible += ventaCombustible;
     }
 
-    public Float getTotalVentasXcombustible() {
+    public double getTotalVentasXcombustible() {
         return totalVentasXcombustible;
     }
 
-    public void setTotalLitros(Float totalLitros) {
+    public void setTotalLitros(double totalLitros) {
         this.totalLitros = totalLitros;
     }
 
-    public Float getTotalLitros() {
+    public double getTotalLitros() {
         return totalLitros;
     }
 }

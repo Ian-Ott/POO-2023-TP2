@@ -4,7 +4,7 @@ public class Expendedor {
     private int codigo;
     private Combustible tipoCombustible = new Combustible();
 
-    private Float totalVentas = 0F;
+    private double totalVentas = 0.0;
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -22,11 +22,11 @@ public class Expendedor {
         return tipoCombustible;
     }
 
-    public void setTotalVentas(Float totalVentas) {
+    public void setTotalVentas(double totalVentas) {
         this.totalVentas = totalVentas;
     }
 
-    public Float getTotalVentas() {
+    public double getTotalVentas() {
         return totalVentas;
     }
 }

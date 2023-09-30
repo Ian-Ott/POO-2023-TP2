@@ -7,6 +7,7 @@ import ar.edu.unlu.poo.billetera.ejercicio4.BilleteraVirtual;
 import ar.edu.unlu.poo.billetera.ejercicio5.BilleteraVirtualV2;
 import ar.edu.unlu.poo.club.ClubFutbol;
 import ar.edu.unlu.poo.club.Subscripciones;
+import ar.edu.unlu.poo.estaciondeservicio.ModuloInformes;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -34,7 +35,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_5();
                 break;
             case 6:
-                //ejemplo_6();
+                ejemplo_6();
                 break;
             case 7:
                 //ejemplo_7();
@@ -71,7 +72,7 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("2-Ejercicio 2 - Agencia de Turismo");
         System.out.println("3-Ejercicio 3 - Academia de Danzas");
         System.out.println("4-Ejercicio 4 - Billetera Virtual");
-        System.out.println("5-Ejercicio 5 - ???");
+        System.out.println("5-Ejercicio 5 - Billetera Virtual V2");
         System.out.println("6-Ejercicio 6 - Estacion de Servicio");
         System.out.println("7-Ejercicio 7 - ???");
         System.out.println("-Parte dos: Herencia y polimorfismo:");
@@ -104,7 +105,7 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("Creo al objeto Club de futbol...");
         ClubFutbol nuevo_club = new ClubFutbol();
         System.out.println("inscribo a 10 nuevos socios...");
-        nuevo_club.inscripcion("Pepito", "Planes", "45.225.211", 19, "11-1234-3421", "Micasa123", "soyPepito@gmail.com", Subscripciones.INTERMEDIA );
+        nuevo_club.inscripcion("Pepe", "Planes", "45.225.211", 19, "11-1234-3421", "Micasa123", "soyPepito@gmail.com", Subscripciones.INTERMEDIA );
         nuevo_club.inscripcion("Jazmin", "Morales", "34.425.266", 34, "11-6664-5943", "Micasa231", "nosoyyo@gmail.com", Subscripciones.BASICA );
         nuevo_club.inscripcion("Juan", "Caballa", "30.675.232", 39, "11-164-4359", "Micasa223", "soyalguien@gmail.com", Subscripciones.INTERMEDIA );
         nuevo_club.inscripcion("Pedro", "Sosa", "40.212.142", 25, "11-3879-2754", "Micasa665", "pedrito123@gmail.com", Subscripciones.DESTACADA );
@@ -305,6 +306,59 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("\nPregunta: ¿Qué pasa con la cohesión y el acoplamiento?");
         System.out.println("Respuesta: Lo que pasa con la cohesion y el acoplamiento es que se mantiene igual a la del anterior ejercicio\nya que solo se agregaron un par de metodos a cada clase que lo necesitaba");
     }
+
+    public static void ejemplo_6(){
+        System.out.println("\nEjemplos del ejercicio 6: ");
+        System.out.println("Creo el sistema de informes...");
+        ModuloInformes estacionDeServicio = new ModuloInformes();
+        System.out.println("\nAgrego a los empleados y los surtidores de la estacion de servicio...");
+        estacionDeServicio.nuevoEmpleado("Pepe", "Dominguez", "MiCasa123", "34.556.793", "11 2541-8820");
+        estacionDeServicio.nuevoEmpleado("Jazmin", "Garcia", "MiCasa341","40.764.725","11 8367-5612");
+        estacionDeServicio.nuevoEmpleado("Lucas", "Gomez", "MiCasa923","34.447.159","11 3805-1292");
+
+        estacionDeServicio.agregarExpendedor(1,"nafta",200.0d);
+        estacionDeServicio.agregarExpendedor(2,"gasoil",100.0d);
+        estacionDeServicio.agregarExpendedor(3,"kerosene", 50.0d);
+        estacionDeServicio.agregarExpendedor(4,"gasoil", 100.0d);
+
+        System.out.println("Creo algunos clientes y hago que realicen compras en la estacion de servicio...");
+        estacionDeServicio.nueva_compra("Camila Rodriguez", "39.456.203","LHD 234", 1, "Jazmin", 40.0d);
+        estacionDeServicio.nueva_compra("Santino Gimenez", "41.957.352", "FRY 884", 3, "Lucas", 60.0d);
+        estacionDeServicio.nueva_compra("Valentin Da Rosa", "37.674.813", "PJK 764", 2, "Pepe", 50.0d);
+        estacionDeServicio.nueva_compra("Juan Alberdi", "46.327.031", "HRT 426", 2, "Lucas", 55.0d);
+        estacionDeServicio.nueva_compra("Julian Guerra", "33.589.472","PRU 925", 3, "Pepe", 45.0d);
+        estacionDeServicio.nueva_compra("Maria Gonzalez", "43.610.732", "JWK 185", 1, "Jazmin",35.0d);
+        estacionDeServicio.nueva_compra("Patricia Morales","38.754.561", "TYR 654", 1, "Pepe", 54.0d);
+        estacionDeServicio.nueva_compra("Axel Nogales", "34.669.387", "PJT 749", 4, "Jazmin", 59.0d);
+        estacionDeServicio.nueva_compra("Diana Martinez", "36.701.551", "LDR 219", 2,"Lucas", 54.0d);
+        estacionDeServicio.nueva_compra("Lara Rodriguez", "37.834.253", "IRT 634", 1, "Jazmin", 39.0d);
+        estacionDeServicio.nueva_compra("Renata Gonzales", "37.458.210", "LQT 655", 3, "Lucas", 56.0d);
+        estacionDeServicio.nueva_compra("Pablo Paez", "28.916.318", "REH 615", 4, "Jazmin",35.0d);
+        estacionDeServicio.nueva_compra("Leo Rodriguez", "41.639.573", "RFT 592", 3, "Lucas", 39.0d);
+        estacionDeServicio.nueva_compra("Julian Guerra", "33.589.472","PRU 925", 3, "Jazmin", 30.0d);
+        estacionDeServicio.nueva_compra("Axel Nogales", "34.669.387", "PJT 749", 4, "Pepe", 46.0d);
+        estacionDeServicio.nueva_compra("Valentin Da Rosa", "37.674.813", "PJK 764", 2, "Pepe", 50.0d);
+
+        System.out.println("\nAhora muestro un informe con el top 10 clientes de la estacion...");
+        estacionDeServicio.informeTop10Clientes();
+
+        System.out.println("\nAhora muestro el informe de ventas por combustible...");
+        estacionDeServicio.informeVentasXCombustible();
+
+        System.out.println("\nAhora muestro el informe de ventas por surtidor....");
+        estacionDeServicio.informeVentasXSurtidor();
+
+        System.out.println("\nAhora muestro los surtidores con su cantidad de litros totales...");
+        estacionDeServicio.litrosXSurtidor();
+
+        System.out.println("\nAhora muestro el informe de ventas por empleados...");
+        estacionDeServicio.informeVentasXEmpleado();
+
+        System.out.println("\nSe ha propuesto un nuevo diseño porque asi el cliente no conoce las ventas y ademas el empleado puede tener acceso mas facil a las ventas que realizo");
+        System.out.println("Ademas el nuevo diseño tiene una lista de expendedores ya que el anterior diseño no cumplia lo propuesto o no era tan eficiente para tener los surtidores" +
+                "\nEn cambio con este nuevo diseño se puede tener varios surtidores como se pide y encima organizados en una lista");
+    }
+
     /*private static void ejemplo_8(){
         System.out.println("\nEjemplo de Biblioteca: ");
         BibliotecaTP1 biblioteca = new BibliotecaTP1();
