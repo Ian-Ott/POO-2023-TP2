@@ -22,7 +22,7 @@ public class Tetraedro extends Figura3D{
     @Override
     public void calcularVolumen() {
         //super.calcularVolumen();
-        Double volumen = Math.pow(getArista(),3) * (Math.sqrt(2)/12);
+        Double volumen = Math.pow(getArista(),3) * (Math.sqrt((double) 2 /12));
         setVolumen(volumen);
     }
 

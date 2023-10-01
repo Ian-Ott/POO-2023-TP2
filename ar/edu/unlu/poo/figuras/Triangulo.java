@@ -1,7 +1,6 @@
 package ar.edu.unlu.poo.figuras;
 
 public class Triangulo extends Figura2D{
-    //calcular area del triangulo
     protected Double base;
     protected Double altura;
 
@@ -21,5 +20,9 @@ public class Triangulo extends Figura2D{
         return base;
     }
 
-
+    @Override
+    public void calcularArea() {
+        Double area = (getBase() * getAltura()) / 2;
+        setArea(area);
+    }
 }

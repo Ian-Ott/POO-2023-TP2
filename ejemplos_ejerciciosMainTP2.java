@@ -9,6 +9,7 @@ import ar.edu.unlu.poo.club.ClubFutbol;
 import ar.edu.unlu.poo.club.Subscripciones;
 import ar.edu.unlu.poo.estaciondeservicio.ejercicio6.ModuloInformes;
 import ar.edu.unlu.poo.estaciondeservicio.ejercicio7.ModuloInformesV2;
+import ar.edu.unlu.poo.figuras.Formas;
 import ar.edu.unlu.poo.libro.NuevaBiblioteca;
 import ar.edu.unlu.poo.libro.SocioBiblioteca;
 
@@ -46,7 +47,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_8();
                 break;
             case 9:
-                //ejemplo_9();
+                ejemplo_9();
                 break;
             case 10:
                 //ejemplo_10();
@@ -428,7 +429,7 @@ public class ejemplos_ejerciciosMainTP2 {
 
 
     public static void ejemplo_8(){
-        System.out.println("\nEjemplo de Biblioteca: ");
+        System.out.println("\nEjemplo del ejercicio 8: ");
         System.out.println("NOTA: aunque no lo parezca la clase Publicaciones esta herendando los metodos de la biblioteca del tp1 solo que no los voy a usar para el ejemplo");
         System.out.println("Aunque algunos de los metodos del tp1 de biblioteca podria no funcionar porque publicaciones agrega nuevos atributos distintos");
         System.out.println("Creo la biblioteca...");
@@ -485,6 +486,26 @@ public class ejemplos_ejerciciosMainTP2 {
 
         System.out.println("\nMuestro la cantidad de ejemplares prestados por cada publicacion...");
         biblioteca.mostrar_cant_ejemplares();
+    }
+
+    public static void ejemplo_9(){
+        System.out.println("\nEjemplo del ejercicio 9:");
+        System.out.println("\nCreo el sistema de formas...");
+        Formas sistemaDeFormas = new Formas();
+        System.out.println("\nAgrego figuras 2d...");
+        sistemaDeFormas.nuevoCirculo(1.0d);
+        sistemaDeFormas.nuevoCuadrado(2.0d,3.0d);
+        sistemaDeFormas.nuevoRectangulo(2.0d,4.0d);
+        sistemaDeFormas.nuevoTriangulo(4.0d,8.0d);
+        System.out.println("\nMuestro el area de todas las figuras 2d... ");
+        sistemaDeFormas.mostrarFiguras2D();
+        System.out.println("\nAgrego figuras 3d...");
+        sistemaDeFormas.nuevoCubo(2.0d);
+        sistemaDeFormas.nuevaEsfera(3.0d);
+        sistemaDeFormas.nuevoParalelepipedo(2.0d,3.0d,4.0d);
+        sistemaDeFormas.nuevoTetraedro(3.0d);
+        System.out.println("\nMuestro el area y volumen de todas las figuras 3d...");
+        sistemaDeFormas.mostrarFiguras3D();
     }
 
 
