@@ -1,12 +1,12 @@
 package ar.edu.unlu.poo.organizacion;
 
 public class EmpleadoAsalariado extends Empleado{
-    private Float sumaFijaMensual;
+    private double sumaFijaMensual;
 
-    public void setSumaFijaMensual(Float sumaFijaMensual) {
+    public void setSumaFijaMensual(double sumaFijaMensual) {
         this.sumaFijaMensual = sumaFijaMensual;
     }
-    public Float getSumaFijaMensual() {
+    public double getSumaFijaMensual() {
         return sumaFijaMensual;
     }
 

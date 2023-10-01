@@ -4,19 +4,19 @@ import java.time.LocalDate;
 import java.time.Month;
 
 public class EmpleadoXHora extends Empleado{
-    private Float sumaXhoraTotal; //eliminar
+    //private double sumaXhoraTotal;
     private int cantHoras;
-    private Float sumaEstipulada;
+    private double sumaEstipulada;
     private Month informacionMes;
     //capaz eliminar
 
-    public void setSumaXhoraTotal(Float sumaXhoraTotal) {
+    /*public void setSumaXhoraTotal(double sumaXhoraTotal) {
         this.sumaXhoraTotal = sumaXhoraTotal;
     }
 
-    public Float getSumaXhoraTotal() {
+    public double getSumaXhoraTotal() {
         return sumaXhoraTotal;
-    }
+    }*/
 
     public void setCantHoras(int cantHoras) {
         this.cantHoras = cantHoras;
@@ -26,11 +26,11 @@ public class EmpleadoXHora extends Empleado{
         return cantHoras;
     }
 
-    public void setSumaEstipulada(Float sumaEstipulada) {
+    public void setSumaEstipulada(double sumaEstipulada) {
         this.sumaEstipulada = sumaEstipulada;
     }
 
-    public Float getSumaEstipulada() {
+    public double getSumaEstipulada() {
         return sumaEstipulada;
     }
 
@@ -50,7 +50,9 @@ public class EmpleadoXHora extends Empleado{
         }
         sueldo += getCantHoras() * getSumaEstipulada();
         if (getInformacionMes().equals(LocalDate.now().getMonth())){
-            sueldo += sueldo * 0.20;
+            if (getCantHoras() > 40){
+                sueldo += sueldo * 0.20;
+            }
         }
         return sueldo;
     }

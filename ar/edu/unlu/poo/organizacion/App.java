@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class App {
     private ArrayList<Empleado> listaEmpleados = new ArrayList<>();
 
-    public void agregarEmpleadoAsalariado(String nombre_apellido, String telefono, String CUIT, LocalDate fechaCumpleanios, Float sumaFijaMensual){
+    public void agregarEmpleadoAsalariado(String nombre_apellido, String telefono, String CUIT, LocalDate fechaCumpleanios, double sumaFijaMensual){
         EmpleadoAsalariado nuevo_empleado = new EmpleadoAsalariado();
         nuevo_empleado.setNombre_apellido(nombre_apellido);
         nuevo_empleado.setTelefono(telefono);
@@ -17,7 +17,7 @@ public class App {
         listaEmpleados.add(nuevo_empleado);
     }
 
-    public void agregarEmpleadoXComision(String nombre_apellido, String telefono, String CUIT, LocalDate fechaCumpleanios, Double cant_ventas,Float porcentajeFijo){
+    public void agregarEmpleadoXComision(String nombre_apellido, String telefono, String CUIT, LocalDate fechaCumpleanios, Double cant_ventas,double porcentajeFijo, double montoXventa){
         EmpleadoXComision nuevo_empleado = new EmpleadoXComision();
         nuevo_empleado.setNombre_apellido(nombre_apellido);
         nuevo_empleado.setTelefono(telefono);
@@ -25,10 +25,11 @@ public class App {
         nuevo_empleado.setFechaCumpleanios(fechaCumpleanios);
         nuevo_empleado.setCant_ventas(cant_ventas);
         nuevo_empleado.setPorcentajeFijo(porcentajeFijo);
+        nuevo_empleado.setMontoXVenta(montoXventa);
         listaEmpleados.add(nuevo_empleado);
     }
 
-    public void agregarEmpleadoXComisionConSalario(String nombre_apellido, String telefono, String CUIT, LocalDate fechaCumpleanios, Double cant_ventas,Float porcentajeFijo, Double montoFijo){
+    public void agregarEmpleadoXComisionConSalario(String nombre_apellido, String telefono, String CUIT, LocalDate fechaCumpleanios, Double cant_ventas,double porcentajeFijo, Double montoFijo, double montoXventa){
         EmpleadoXComisionConSalario nuevo_empleado = new EmpleadoXComisionConSalario();
         nuevo_empleado.setNombre_apellido(nombre_apellido);
         nuevo_empleado.setTelefono(telefono);
@@ -37,10 +38,11 @@ public class App {
         nuevo_empleado.setCant_ventas(cant_ventas);
         nuevo_empleado.setPorcentajeFijo(porcentajeFijo);
         nuevo_empleado.setMontoFijo(montoFijo);
+        nuevo_empleado.setMontoXVenta(montoXventa);
         listaEmpleados.add(nuevo_empleado);
     }
 
-    public void agregarEmpleadoXHora(String nombre_apellido, String telefono, String CUIT, LocalDate fechaCumpleanios, Float sumaXhoraTotal, int cantHoras, Float sumaEstipulada, Month informacionMes){
+    public void agregarEmpleadoXHora(String nombre_apellido, String telefono, String CUIT, LocalDate fechaCumpleanios, int cantHoras, double sumaEstipulada, Month informacionMes){
         EmpleadoXHora nuevo_empleado = new EmpleadoXHora();
         nuevo_empleado.setNombre_apellido(nombre_apellido);
         nuevo_empleado.setTelefono(telefono);
@@ -49,7 +51,7 @@ public class App {
         nuevo_empleado.setCantHoras(cantHoras);
         nuevo_empleado.setInformacionMes(informacionMes);
         nuevo_empleado.setSumaEstipulada(sumaEstipulada);
-        nuevo_empleado.setSumaXhoraTotal(sumaXhoraTotal);
+        //nuevo_empleado.setSumaXhoraTotal(sumaXhoraTotal);
         listaEmpleados.add(nuevo_empleado);
     }
 
@@ -60,5 +62,15 @@ public class App {
         nuevo_empleado.setCUIT(CUIT);
         nuevo_empleado.setFechaCumpleanios(fechaCumpleanios);
         listaEmpleados.add(nuevo_empleado);
+    }
+
+    public void mostrarSueldoEmpleados(){
+        Double sueldo;
+        Empleado empleadoAux;
+        for (int i = 0; i < listaEmpleados.size(); i++){
+            empleadoAux = listaEmpleados.get(i);
+            sueldo = empleadoAux.CalcularSueldo();
+            System.out.println((i + 1) + "-Nombre: " + empleadoAux.getNombre_apellido() + " | Fecha de cumpleanios: " + empleadoAux.getFechaCumpleanios() + " | sueldo: " + sueldo);
+        }
     }
 }

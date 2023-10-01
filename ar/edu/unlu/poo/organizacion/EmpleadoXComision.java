@@ -1,17 +1,17 @@
 package ar.edu.unlu.poo.organizacion;
 
 public class EmpleadoXComision extends Empleado {
-    private Float montoXVenta;
+    private double montoXVenta;
     private Double cant_ventas;
-    private Float porcentajeFijo;
+    private double porcentajeFijo;
 
-    private Float montoTotalVentas;
+    private double montoTotalVentas;
 
-    public void setMontoXVenta(Float montoXVenta) {
+    public void setMontoXVenta(double montoXVenta) {
         this.montoXVenta = montoXVenta;
     }
 
-    public Float getMontoXVenta() {
+    public double getMontoXVenta() {
         return montoXVenta;
     }
 
@@ -23,19 +23,19 @@ public class EmpleadoXComision extends Empleado {
         return cant_ventas;
     }
 
-    public void setPorcentajeFijo(Float porcentajeFijo) {
+    public void setPorcentajeFijo(double porcentajeFijo) {
         this.porcentajeFijo = porcentajeFijo;
     }
 
-    public Float getPorcentajeFijo() {
+    public double getPorcentajeFijo() {
         return porcentajeFijo;
     }
 
-    public void setMontoTotalVentas(Float montoTotalVentas) {
+    public void setMontoTotalVentas(double montoTotalVentas) {
         this.montoTotalVentas = montoTotalVentas;
     }
 
-    public Float getMontoTotalVentas() {
+    public double getMontoTotalVentas() {
         return montoTotalVentas;
     }
 
@@ -44,9 +44,11 @@ public class EmpleadoXComision extends Empleado {
         Double sueldo = 0.0;
         if (es_cumpleanios()){
             sueldo += cumpleanios();
-            sueldo += calcularmontoTotalVentas() * 0.5;
+            sueldo += calcularmontoTotalVentas();
+            sueldo += sueldo + 0.5;
         }else {
-            sueldo += calcularmontoTotalVentas() * getPorcentajeFijo();
+            sueldo += calcularmontoTotalVentas();
+            sueldo += sueldo * getPorcentajeFijo();
         }
         return sueldo;
     }

@@ -1,13 +1,13 @@
 package ar.edu.unlu.poo.organizacion;
 
 public class EmpleadoXComisionConSalario extends EmpleadoXComision{
-    private Double montoFijo;
+    private double montoFijo;
 
-    public void setMontoFijo(Double montoFijo) {
+    public void setMontoFijo(double montoFijo) {
         this.montoFijo = montoFijo;
     }
 
-    public Double getMontoFijo() {
+    public double getMontoFijo() {
         return montoFijo;
     }
 

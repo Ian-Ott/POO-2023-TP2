@@ -12,6 +12,7 @@ import ar.edu.unlu.poo.estaciondeservicio.ejercicio7.ModuloInformesV2;
 import ar.edu.unlu.poo.figuras.Formas;
 import ar.edu.unlu.poo.libro.NuevaBiblioteca;
 import ar.edu.unlu.poo.libro.SocioBiblioteca;
+import ar.edu.unlu.poo.organizacion.App;
 
 import java.time.*;
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_9();
                 break;
             case 10:
-                //ejemplo_10();
+                ejemplo_10();
                 break;
             case 11:
                 //ejemplo_11();
@@ -492,6 +493,7 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("\nEjemplo del ejercicio 9:");
         System.out.println("\nCreo el sistema de formas...");
         Formas sistemaDeFormas = new Formas();
+
         System.out.println("\nAgrego figuras 2d...");
         sistemaDeFormas.nuevoCirculo(1.0d);
         sistemaDeFormas.nuevoCuadrado(2.0d,3.0d);
@@ -499,6 +501,7 @@ public class ejemplos_ejerciciosMainTP2 {
         sistemaDeFormas.nuevoTriangulo(4.0d,8.0d);
         System.out.println("\nMuestro el area de todas las figuras 2d... ");
         sistemaDeFormas.mostrarFiguras2D();
+
         System.out.println("\nAgrego figuras 3d...");
         sistemaDeFormas.nuevoCubo(2.0d);
         sistemaDeFormas.nuevaEsfera(3.0d);
@@ -506,6 +509,21 @@ public class ejemplos_ejerciciosMainTP2 {
         sistemaDeFormas.nuevoTetraedro(3.0d);
         System.out.println("\nMuestro el area y volumen de todas las figuras 3d...");
         sistemaDeFormas.mostrarFiguras3D();
+    }
+
+    public static void ejemplo_10(){
+        System.out.println("\nEjemplo del ejercicio 10: ");
+        System.out.println("Creo la app...");
+        App appOrganizacion = new App();
+        System.out.println("\nAgrego un empleado de cada tipo...");
+        appOrganizacion.agregarEmpleadoPasante("Pepe Morales", "11 4873-9426", "20-33654824-4", LocalDate.of(2023,6,9));
+        appOrganizacion.agregarEmpleadoAsalariado("Jazmin Gutierrez", "11 9238-7217","21-45452353-3",LocalDate.of(2023,10,1),80000.0d);
+        appOrganizacion.agregarEmpleadoXComision("Lucas Pereira", "11 9283-5729", "19-38432416-2",LocalDate.of(2023,10,7),20.0d,0.3, 7000.0d);
+        appOrganizacion.agregarEmpleadoXHora("Martina Sosa", "11 8922-5373", "20-30523532",LocalDate.of(2023,10,8),42, 5000.0d,Month.OCTOBER);
+        appOrganizacion.agregarEmpleadoXComisionConSalario("Matias Rodriguez", "11 5436-6539","20-33648140-4",LocalDate.of(2023,10,9),20.0d,0.3,10000.0d,7000.0d);
+
+        System.out.println("\nAhora muestro el sueldo de cada uno...");
+        appOrganizacion.mostrarSueldoEmpleados();
     }
 
 
