@@ -8,8 +8,11 @@ import ar.edu.unlu.poo.billetera.ejercicio5.BilleteraVirtualV2;
 import ar.edu.unlu.poo.club.ClubFutbol;
 import ar.edu.unlu.poo.club.Subscripciones;
 import ar.edu.unlu.poo.estaciondeservicio.ejercicio6.ModuloInformes;
+import ar.edu.unlu.poo.estaciondeservicio.ejercicio7.ModuloInformesV2;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -38,7 +41,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_6();
                 break;
             case 7:
-                //ejemplo_7();
+                ejemplo_7();
                 break;
             case 8:
                 //ejemplo_8();
@@ -74,7 +77,7 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("4-Ejercicio 4 - Billetera Virtual");
         System.out.println("5-Ejercicio 5 - Billetera Virtual V2");
         System.out.println("6-Ejercicio 6 - Estacion de Servicio");
-        System.out.println("7-Ejercicio 7 - ???");
+        System.out.println("7-Ejercicio 7 - Estacion de Servicio V2");
         System.out.println("-Parte dos: Herencia y polimorfismo:");
         System.out.println("8-Ejercicio 8 - Biblioteca V2");
         System.out.println("9-Ejercicio 9 - Figuras Geometricas");
@@ -358,6 +361,72 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("Ademas el nuevo diseño tiene una lista de expendedores ya que el anterior diseño no cumplia lo propuesto o no era tan eficiente para tener los surtidores" +
                 "\nEn cambio con este nuevo diseño se puede tener varios surtidores como se pide y encima organizados en una lista");
     }
+
+    public static  void ejemplo_7(){
+        System.out.println("\nEjemplos del ejercicio 7: ");
+        System.out.println("Creo el sistema de informes...");
+        ModuloInformesV2 estacionDeServicioV2 = new ModuloInformesV2();
+        System.out.println("\nAgrego a los empleados y los surtidores de la estacion de servicio...");
+        estacionDeServicioV2.nuevoEmpleado("Pepe", "Dominguez", "MiCasa123", "34.556.793", "11 2541-8820");
+        estacionDeServicioV2.nuevoEmpleado("Jazmin", "Garcia", "MiCasa341","40.764.725","11 8367-5612");
+        estacionDeServicioV2.nuevoEmpleado("Lucas", "Gomez", "MiCasa923","34.447.159","11 3805-1292");
+
+        estacionDeServicioV2.agregarExpendedor(1,"nafta",200.0d);
+        estacionDeServicioV2.agregarExpendedor(2,"gasoil",100.0d);
+        estacionDeServicioV2.agregarExpendedor(3,"kerosene", 50.0d);
+        estacionDeServicioV2.agregarExpendedor(4,"gasoil", 100.0d);
+
+        System.out.println("Creo algunos clientes y hago que realicen compras en la estacion de servicio...");
+        System.out.println("AVISO: las fechas de las compras seran establecidas para el dia 30/09/2023");
+        estacionDeServicioV2.nueva_compra("Camila Rodriguez", "39.456.203","LHD 234", 1, "Jazmin", 40.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Santino Gimenez", "41.957.352", "FRY 884", 3, "Lucas", 60.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Valentin Da Rosa", "37.674.813", "PJK 764", 2, "Pepe", 50.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Juan Alberdi", "46.327.031", "HRT 426", 2, "Lucas", 55.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Julian Guerra", "33.589.472","PRU 925", 3, "Pepe", 45.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Maria Gonzalez", "43.610.732", "JWK 185", 1, "Jazmin",35.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Patricia Morales","38.754.561", "TYR 654", 1, "Pepe", 54.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Axel Nogales", "34.669.387", "PJT 749", 4, "Jazmin", 59.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Diana Martinez", "36.701.551", "LDR 219", 2,"Lucas", 54.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Lara Rodriguez", "37.834.253", "IRT 634", 1, "Jazmin", 39.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Renata Gonzales", "37.458.210", "LQT 655", 3, "Lucas", 56.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Pablo Paez", "28.916.318", "REH 615", 4, "Jazmin",35.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+        estacionDeServicioV2.nueva_compra("Leo Rodriguez", "41.639.573", "RFT 592", 3, "Lucas", 39.0d, LocalDateTime.of(LocalDate.of(2023,9,30), LocalTime.NOON),false);
+
+        System.out.println("\nAhora muestro un informe con el top 10 clientes de septiembre de la estacion...");
+        estacionDeServicioV2.informeTop10Clientes(Month.SEPTEMBER);
+
+        System.out.println("\nMuestro el informe de venta de combustibles con su precio de venta unitario...");
+        estacionDeServicioV2.informeVentasXCombustible();
+
+        System.out.println("\nAhora aumento el precio unitario de los combustibles...");
+        estacionDeServicioV2.cambiar_precioCombustible("nafta", 250.0d);
+        estacionDeServicioV2.cambiar_precioCombustible("gasoil", 150.0d);
+        estacionDeServicioV2.cambiar_precioCombustible("kerosene", 100.0d);
+
+        System.out.println("\nMuestro de nuevo el informe para ver el precio unitario cambiado...");
+        estacionDeServicioV2.informeVentasXCombustible();
+
+        System.out.println("\nMuestro el informe de empleados y a los top 10 les otorgo el permiso de dar un descuento....");
+        estacionDeServicioV2.informeVentasXEmpleado(Month.SEPTEMBER, true);
+
+        System.out.println("\nMuestro el top 10 de clientes para ver cuales pueden recibir el descuento...");
+        estacionDeServicioV2.informeTop10Clientes(Month.SEPTEMBER);
+
+        System.out.println("\nHago la compra con la cliente Patricia (esta deberia de recibir un 5% de descuento por ser top 10)...");
+        estacionDeServicioV2.nueva_compra("Patricia Morales","38.754.561", "TYR 654", 1, "Jazmin", 30.0d, LocalDateTime.of(LocalDate.of(2023,10,6), LocalTime.NOON),false);
+
+        System.out.println("\nAhora hago la compra con el cliente Leo y el empleado Pepe va a otorgar un descuento del 10%...");
+        estacionDeServicioV2.nueva_compra("Leo Rodriguez", "41.639.573", "RFT 592", 3, "Pepe", 50.0d, LocalDateTime.of(LocalDate.of(2023,10,6), LocalTime.NOON),true);
+
+        System.out.println("\nComo Pepe otorgo el descuento ahora voy a mostrar el informe de empleados del mes de octubre sin otorgar un nuevo permiso de descuento para ver si pepe realmente otorgo el descuento...");
+        estacionDeServicioV2.informeVentasXEmpleado(Month.OCTOBER,false);
+
+        System.out.println("\nMuestro a los clientes del mes de octubre para ver si se aplicaron los descuentos...");
+        estacionDeServicioV2.informeTop10Clientes(Month.OCTOBER);
+        System.out.println("\nPregunta:  ¿Qué pasa si el dueño decide vender otros productos además de combustible? Como pueden ser: servicios de boxes, productos de limpieza para el auto, etc.");
+        System.out.println("Respuesta: Lo que pasaria es que habria que crear una clase llamada productos y se tendria que usar herencia con cada tipo de producto que se desee para calcular el total de cada uno.");
+    }
+
 
     /*private static void ejemplo_8(){
         System.out.println("\nEjemplo de Biblioteca: ");
