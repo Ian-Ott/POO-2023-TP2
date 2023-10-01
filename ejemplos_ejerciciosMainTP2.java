@@ -3,6 +3,7 @@ import ar.edu.unlu.poo.academia.CredencialAlumno;
 import ar.edu.unlu.poo.academia.Nivel;
 import ar.edu.unlu.poo.agencia.AgenciaTurismo;
 import ar.edu.unlu.poo.agencia.Clasificacion;
+import ar.edu.unlu.poo.agenciadeautomoviles.SistemaDeAgencia;
 import ar.edu.unlu.poo.billetera.ejercicio4.BilleteraVirtual;
 import ar.edu.unlu.poo.billetera.ejercicio5.BilleteraVirtualV2;
 import ar.edu.unlu.poo.club.ClubFutbol;
@@ -54,7 +55,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_10();
                 break;
             case 11:
-                //ejemplo_11();
+                ejemplo_11();
                 break;
             case 12:
                 //ejemplo_12();
@@ -524,6 +525,34 @@ public class ejemplos_ejerciciosMainTP2 {
 
         System.out.println("\nAhora muestro el sueldo de cada uno...");
         appOrganizacion.mostrarSueldoEmpleados();
+    }
+
+    public static void ejemplo_11(){
+        System.out.println("\nEjemplo del ejercicio 11: ");
+        System.out.println("Creo la agencia de autos...");
+        SistemaDeAgencia agenciaAutomoviles = new SistemaDeAgencia();
+        System.out.println("\nRegistro un vehiculo de cada tipo para probar...");
+        agenciaAutomoviles.registrarCamion("UKE 536");
+        agenciaAutomoviles.registrarAutoVIP("RTF 725", 4);
+        agenciaAutomoviles.registrarAutoDePasajeros("PRG 150", 2);
+        agenciaAutomoviles.registrarCamionetasFlete("IRL 936", 1000.0d);
+        agenciaAutomoviles.registrarCombi("KLA 482");
+
+        System.out.println("\nPresto algunos vehiculos a clientes...");
+        agenciaAutomoviles.prestarVehiculo("Pepe Martinez","35.467.174","11 4592-0209", "RTF 725", 30);
+        agenciaAutomoviles.prestarVehiculo("Jazmin Rodriguez", "39.432.794","11 6955-6734", "KLA 482", 50);
+        agenciaAutomoviles.prestarVehiculo("Raul Fernandez", "34.659.175", "11 5327-1546", "UKE 536",55);
+        agenciaAutomoviles.prestarVehiculo("Pepe Martinez", "35.467.174","11 4592-0209", "PRG 150", 20);
+        agenciaAutomoviles.prestarVehiculo("Jazmin Rodriguez", "39.432.794","11 6955-6734", "IRL 936", 30);
+
+        System.out.println("\nMuestro el monto total del cliente Pepe: ");
+        agenciaAutomoviles.mostrarMontoTotalCliente("35.467.174");
+        System.out.println("\nMuestro el total del cliente Jazmin: ");
+        agenciaAutomoviles.mostrarMontoTotalCliente("39.432.794");
+        System.out.println("\nMuestro el total del cliente Raul: ");
+        agenciaAutomoviles.mostrarMontoTotalCliente("34.659.175");
+        System.out.println("\nMuestro el total de todos los alquileres...");
+        agenciaAutomoviles.mostrarMontoTodosLosAlquileres();
     }
 
 

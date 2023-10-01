@@ -21,7 +21,7 @@ public class SistemaDeAgencia {
         boolean resultado = false;
         for (int i = 0; i < listaDeVehiculos.size(); i++){
             if (patente.equals(listaDeVehiculos.get(i).getPatente())){
-                System.out.println("EROR PATENTE YA REGISTRADA. No se puede registrar dos vehiculos con la misma patente");
+                System.out.println("ERROR PATENTE YA REGISTRADA. No se puede registrar dos vehiculos con la misma patente");
                 resultado = true;
             }
         }
@@ -89,8 +89,9 @@ public class SistemaDeAgencia {
                     clienteAux = listaClientes.get(j);
                     if (DNI.equals(clienteAux.getDNI())){
                         clienteAux.sumarAlquilerCliente(nuevoPresupuesto.getAlquilerArmado());
+                        alquileres.add(nuevoPresupuesto.getAlquilerArmado());
+                        System.out.println("Se presto el vehiculo con patente: " + listaDeVehiculos.get(i).getPatente());
                     }
-                    System.out.println("Se presto el vehiculo con patente: " + listaDeVehiculos.get(i).getPatente());
                 }
             }
         }
@@ -114,7 +115,7 @@ public class SistemaDeAgencia {
         for (int i = 0; i < listaClientes.size(); i++){
             clienteAux = listaClientes.get(i);
             if (listaClientes.get(i).getDNI().equals(DNI)){
-                System.out.println("Cliente: " + clienteAux.getNombre_apellido() + "DNI: " + clienteAux.getDNI() + "Telefono: " + clienteAux.getTelefono());
+                System.out.println("Cliente: " + clienteAux.getNombre_apellido() + " | DNI: " + clienteAux.getDNI() + " | Telefono: " + clienteAux.getTelefono());
                 for (int j = 0; j < clienteAux.getAlquileresCliente().size(); j++){
                     alquilerAux = clienteAux.getAlquileresCliente().get(j);
                     montoTotal += alquilerAux.getSaldoAPagar();
@@ -126,7 +127,7 @@ public class SistemaDeAgencia {
     }
 
     public void mostrarMontoTodosLosAlquileres(){
-        Double montoTotal = 0.0;
+        double montoTotal = 0.0;
         for (int i = 0; i < alquileres.size(); i++){
             montoTotal += alquileres.get(i).getSaldoAPagar();
         }

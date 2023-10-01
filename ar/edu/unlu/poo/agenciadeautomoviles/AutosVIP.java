@@ -6,7 +6,9 @@ public class AutosVIP extends AutoDePasajero{
         Double monto = 0.0;
         for (int i = 0 ; i < cantDias; i++){
             monto += getPrecioBase();
-            monto += 500.0;
+            for (int j = 0; j < getAsientos(); j++){
+                monto += 500.0;
+            }
         }
         return monto;
     }

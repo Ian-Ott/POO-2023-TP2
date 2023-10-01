@@ -49,5 +49,6 @@ public class Presupuesto {
         nuevoAlquiler.setFechaInicio(LocalDate.now());
         nuevoAlquiler.setFechaFin(LocalDate.now().plusDays(cantDias));
         nuevoAlquiler.setSaldoAPagar(monto);
+        setAlquilerArmado(nuevoAlquiler);
     }
 }
