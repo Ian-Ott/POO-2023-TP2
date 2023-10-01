@@ -4,6 +4,7 @@ import ar.edu.unlu.poo.academia.Nivel;
 import ar.edu.unlu.poo.agencia.AgenciaTurismo;
 import ar.edu.unlu.poo.agencia.Clasificacion;
 import ar.edu.unlu.poo.agenciadeautomoviles.SistemaDeAgencia;
+import ar.edu.unlu.poo.billetera.ejercicio12.BilleteraVirtualV3;
 import ar.edu.unlu.poo.billetera.ejercicio4.BilleteraVirtual;
 import ar.edu.unlu.poo.billetera.ejercicio5.BilleteraVirtualV2;
 import ar.edu.unlu.poo.club.ClubFutbol;
@@ -58,7 +59,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_11();
                 break;
             case 12:
-                //ejemplo_12();
+                ejemplo_12();
                 break;
             case 13:
                 //ejemplo_13();
@@ -85,8 +86,8 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("9-Ejercicio 9 - Figuras Geometricas");
         System.out.println("10-Ejercicio 10 - App Empleados");
         System.out.println("11-Ejercicio 11 - Agencia de Vehiculos");
-        System.out.println("12-Ejercicio 12 - ???");
-        System.out.println("13-Ejercicio 13 - ???");
+        System.out.println("12-Ejercicio 12 - Billetera Virtual V3");
+        System.out.println("13-Ejercicio 13 - Empresa de Vuelos Comerciales");
         System.out.println("14-Ejercicio 14 - Agencia de Turismo V2");
         System.out.println("AVISO: VUELVA A EJECUTAR EL MAIN SI LUEGO QUIERE VER OTRO EJERCICIO");
     }
@@ -553,6 +554,89 @@ public class ejemplos_ejerciciosMainTP2 {
         agenciaAutomoviles.mostrarMontoTotalCliente("34.659.175");
         System.out.println("\nMuestro el total de todos los alquileres...");
         agenciaAutomoviles.mostrarMontoTodosLosAlquileres();
+    }
+
+    public static void ejemplo_12(){
+        System.out.println("\nEjemplos del ejercicio 12:");
+        System.out.println("AVISO: primero se probara que funcionan las cuentas normales y las credito " +
+                "\nque en teoria deberian de funcionar igual a como lo hacen en el ejercicio 5" +
+                "\nLuego se probaran las operaciones de una caja ahorro");
+        System.out.println("Creo la billetera virtual...");
+        BilleteraVirtualV3 billeteraEjemploV3 = new BilleteraVirtualV3();
+        System.out.println("Creo una cuenta con cuenta credito y normal...");
+        billeteraEjemploV3.crear_cuenta("Jazmin", "12345678", 3000.0d, 1000.0d, 1000.0d, true ,false,null);
+        System.out.println("\nMuestro el estado de la cuenta del usuario Jazmin...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nLa usuario Jazmin ahora va a comprar con su cuenta credito ($1000)...");
+        if (billeteraEjemploV3.comprarUsandoCuentaCredito("Jazmin", "12345678", 1000.0d)){
+            System.out.println("Compra Exitosa!!!");
+        }
+        System.out.println("\nMuestro el estado de Jazmin...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nAhora realizo un pago de la compra realizada(paga $900)...");
+        if (billeteraEjemploV3.pagarUsandoCuentaCredito("Jazmin","12345678", 900.0d, 0)){
+            System.out.println("Pago realizado!!");
+        }
+        System.out.println("\nMuestro el estado para ver como quedo el saldo deudor...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Jazmin", "12345678");
+
+        System.out.println("\nHago que invierta una parte de su saldo ($1500)...");
+        if (billeteraEjemploV3.invertirMontoCuenta("Jazmin", "12345678", 1500)){
+            System.out.println("Se invirtio correctamente!!!");
+        }
+        System.out.println("\nMuestro su estado...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nIntento realizar un gasto mayor al sueldo ($3000)...");
+        billeteraEjemploV3.realizarGastoCuenta("Jazmin", "12345678",2500.0d);
+        System.out.println("\nComo tiene una inversion se puede reducir el giro descubierto por lo que hago que gaste igual...");
+        if (billeteraEjemploV3.realizarGastoYGirarCuenta("Jazmin", "12345678",2500.0d)){
+            System.out.println("Se realizo el gasto correctamente!!!");
+        }
+        System.out.println("\nMuestro su estado...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nDeposito $1500 para tener saldo en la cuenta...");
+        billeteraEjemploV3.depositarMontoCuenta("Jazmin", "12345678",1500.0d);
+        System.out.println("\nMuestro el estado...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nInvierto $500 de su saldo...");
+        if (billeteraEjemploV3.invertirMontoCuenta("Jazmin", "12345678",500.0d)){
+            System.out.println("Se invertio correctamente!!!");
+        }
+        System.out.println("\nMuestro su estado...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Jazmin", "12345678");
+        System.out.println("\nAhora cancelo la inversion");
+        System.out.println("AVISO: como la inversion no fue hace 30 dias nisiquiera le va a dar un interes del 30% pero esa opcion esta implementada en el metodo");
+        if (billeteraEjemploV3.cancelarInversionCuenta("Jazmin", "12345678")){
+            System.out.println("Se cancelo correctamente la inversion!!!");
+        }
+        System.out.println("\nMuestro el estado...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Jazmin", "12345678");
+
+        System.out.println("______________________NUEVO____________________________");
+        System.out.println("\nAhora creo un usuario que tenga caja de ahorro...");
+        billeteraEjemploV3.crear_cuenta("Pepe", "ContraseniaSegura", 1500.0d, 500.0d, null,false,true,3000.0d);
+        System.out.println("\nMuestro su estado...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
+        System.out.println("\nPrimero invierto $1500 con la caja de ahorro de Pepe");
+        if (billeteraEjemploV3.invertirMontoCajaAhorro("Pepe", "ContraseniaSegura",1500.0d)){
+            System.out.println("Se invertio correctamente!!!");
+        }
+        System.out.println("\nMuestro su nuevo estado...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
+        System.out.println("\nDeposito $500 en la caja de ahorro de Pepe");
+        billeteraEjemploV3.depositarMontoCajaAhorro("Pepe", "ContraseniaSegura",500.0d);
+        System.out.println("\nAhora trato de gastar lo que esta en la caja de ahorro con $3000...");
+        billeteraEjemploV3.realizarGastoCajaAhorro("Pepe", "ContraseniaSegura",3000.0d);
+        System.out.println("\nComo quiero realizar el gasto voy a cancelar la inversion y luego gastar el dinero...");
+        if (billeteraEjemploV3.cancelarInversionCajaAhorro("Pepe", "ContraseniaSegura")){
+            System.out.println("Se cancelo la inversion correctamente!");
+        }
+        System.out.println("\nMuestro el estado...");
+        billeteraEjemploV3.mostrarEstadoCuenta("Pepe", "ContraseniaSegura");
+        System.out.println("\nAhora por ultimo realizo el gasto de $3000 en la caja de ahorro...");
+        if (billeteraEjemploV3.realizarGastoCajaAhorro("Pepe", "ContraseniaSegura",3000.0d)){
+            System.out.println("Se realizo el gasto correctamente!!!");
+        }
     }
 
 
