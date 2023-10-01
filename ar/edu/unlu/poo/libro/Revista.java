@@ -7,6 +7,21 @@ public class Revista extends Publicaciones{ //tienen la misma logica que los lib
     private int numero;
     private Year anioPublicacion;
 
+    public Revista(String titulo, String editor, String telefono, String proveedor, int cantEjemplares, String issn, int numeroRevista, Year anioPublicacion) {
+        this.nombre = titulo;
+        this.editor = editor;
+        this.telefono = telefono;
+        this.proveedor = proveedor;
+        for (int i = 0;i < cantEjemplares; i++){
+            Ejemplar nuevo_ejemplar = new Ejemplar();
+            nuevo_ejemplar.setNro(i + 1);
+            this.ejemplares.add(nuevo_ejemplar);
+        }
+        this.ISSN = issn;
+        this.numero = numeroRevista;
+        this.anioPublicacion = anioPublicacion;
+    }
+
     public void setISSN(String ISSN) {
         this.ISSN = ISSN;
     }

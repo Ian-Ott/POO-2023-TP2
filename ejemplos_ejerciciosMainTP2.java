@@ -9,11 +9,10 @@ import ar.edu.unlu.poo.club.ClubFutbol;
 import ar.edu.unlu.poo.club.Subscripciones;
 import ar.edu.unlu.poo.estaciondeservicio.ejercicio6.ModuloInformes;
 import ar.edu.unlu.poo.estaciondeservicio.ejercicio7.ModuloInformesV2;
+import ar.edu.unlu.poo.libro.NuevaBiblioteca;
+import ar.edu.unlu.poo.libro.SocioBiblioteca;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Month;
+import java.time.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,7 +43,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_7();
                 break;
             case 8:
-                //ejemplo_8();
+                ejemplo_8();
                 break;
             case 9:
                 //ejemplo_9();
@@ -428,39 +427,65 @@ public class ejemplos_ejerciciosMainTP2 {
     }
 
 
-    /*private static void ejemplo_8(){
+    public static void ejemplo_8(){
         System.out.println("\nEjemplo de Biblioteca: ");
-        BibliotecaTP1 biblioteca = new BibliotecaTP1();
+        System.out.println("NOTA: aunque no lo parezca la clase Publicaciones esta herendando los metodos de la biblioteca del tp1 solo que no los voy a usar para el ejemplo");
+        System.out.println("Aunque algunos de los metodos del tp1 de biblioteca podria no funcionar porque publicaciones agrega nuevos atributos distintos");
+        System.out.println("Creo la biblioteca...");
+        NuevaBiblioteca biblioteca = new NuevaBiblioteca();
 
         System.out.println("\nagrego libros a la biblioteca... ");
-        biblioteca.agregar_libro("La odisea", "Homero", 448, 10);
-        biblioteca.agregar_libro("Frankenstein", "Mary Shelley", 304, 1);
+        ArrayList<String> autores = new ArrayList<>();
+        autores.add("Abraham Silberschatz");
+        autores.add("Peter Baer Galvin");
+        autores.add("Greg Gagne");
+        biblioteca.agregar_libro("Fundamentos De Sistemas Operativos (7ma Edicion)", autores,"Carmelo Sanchez Gonzalez", "11 2367-1953", "Pepe", 5,"84-481-4641-7", "2005",828);
+        autores.remove(2);
+        autores.remove(1);
+        autores.remove(0);
+        autores.add("Carlo Collodi");
+        biblioteca.agregar_libro("Las Aventuras De Pinocho",autores,"no tiene", "11 5701-6362", "Jazmin", 2, "23-256-7123-6", "1883",204);
 
-        System.out.println("\nContenido de la biblioteca: " + biblioteca);
+        System.out.println("\nCreo socios de la biblioteca...");
+        SocioBiblioteca socioLucas = biblioteca.agregarSocioBiblioteca("Lucas Gomez","34.674.462");
+        SocioBiblioteca socioCamila = biblioteca.agregarSocioBiblioteca("Camila Rodriguez", "40.591.034");
 
-        System.out.println("\nPido prestado dos libros de la odisea: ");
-        biblioteca.prestar_libro("La odisea", "Homero");
-        biblioteca.prestar_libro("La odisea", "Homero");
+        System.out.println("\nAhora presto dos ejemplares de libros a dos socios diferentes de la biblioteca...");
+        biblioteca.prestar_ejemplar("Fundamentos De Sistemas Operativos (7ma Edicion)","Carmelo Sanchez Gonzalez",socioLucas,3);
+        biblioteca.prestar_ejemplar("Fundamentos De Sistemas Operativos (7ma Edicion)","Carmelo Sanchez Gonzalez",socioCamila,5);
 
-        System.out.println("\nPido prestado un libro de frankestein: ");
-        biblioteca.prestar_libro("Frankenstein", "Mary Shelley");
+        System.out.println("\nMuestro la cantidad de ejemplares prestados por cada libro...");
+        biblioteca.mostrar_cant_ejemplares();
 
-        System.out.println("\nCompruebo los prestamos realizados con el libro la odisea: " + biblioteca.prestamosRealizados("La odisea", "Homero"));
+        System.out.println("\nMuestro los ejemplares que fueron prestados...");
+        biblioteca.mostrar_ejemplaresPrestados();
 
-        System.out.println("\nComparo la cantidad de paginas del libro la odisea con el de frankestein: ");
-        if (biblioteca.libro1_tieneMasPags("La odisea" , "Homero", "Frankenstein", "Mary Shelley")){
-            System.out.println("La odisea tiene mas cantidad de paginas que Frankenstein");
-        }else {
-            System.out.println("Frankenstein tiene mas cantidad de paginas que frankenstein");
-        }
-        System.out.println("\nPido prestado un libro mas de la odisea y compruebo la cantidad total de prestamos que realizo la biblioteca: ");
-        biblioteca.prestar_libro("La odisea", "Homero");
-        System.out.println("\nLa cantidad de prestamos totales que realizo la biblioteca fue de " + biblioteca.total_prestamos());
+        System.out.println("\nDevuelvo un libro prestado...");
+        biblioteca.devolverEjemplar(socioLucas);
 
-        System.out.println("\nMuestro como quedo la descripcion de La odisea: ");
-        biblioteca.mostrar_descripcion("La odisea", "Homero");
+        System.out.println("\nVuelvo a mostrar los ejemplares prestados...");
+        biblioteca.mostrar_ejemplaresPrestados();
 
-    } este es un ejemplo del ejercicio 6 del tp1*/
+        System.out.println("Creo dos revistas diferentes...");
+        biblioteca.agregar_revista("Historia Social", "Carmen", "11 5839-3778", "Jazmin", 3,"4525-8622", 2, "2020");
+        biblioteca.agregar_revista("America Latina Hoy", "Jose", "11 6438-1194", "Pepe", 4,"6458-1538",3,"2023");
+
+        System.out.println("\nEl socio Lucas ahora pide prestada una revista...");
+        biblioteca.prestar_ejemplar("Historia Social","Carmen", socioLucas, 2);
+        System.out.println("\nVuelvo a mostrar los ejemplares prestados...");
+        biblioteca.mostrar_ejemplaresPrestados();
+
+        System.out.println("\nAgrego una Tesis a la biblioteca...");
+        biblioteca.agregarTesis("Tesis1", "Raul", "11 9846-7227","Pepe", 2,"Joaquin",LocalDate.of(2022,2,3));
+        System.out.println("\nVuelve a pedir prestado otro ejemplar Lucas...");
+        biblioteca.prestar_ejemplar("Tesis1", "Raul", socioLucas, 1);
+
+        System.out.println("\nAhora agrego un diario...");
+        biblioteca.agregar_diario("Clarin", "Ricardo Kirschbaum","11 7394-2918", "Jazmin", 3, LocalDate.of(2023,10,1));
+
+        System.out.println("\nMuestro la cantidad de ejemplares prestados por cada publicacion...");
+        biblioteca.mostrar_cant_ejemplares();
+    }
 
 
 }

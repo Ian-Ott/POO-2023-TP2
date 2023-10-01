@@ -37,7 +37,7 @@ public class SocioBiblioteca {
         return ejemplarEnPosesion;
     }
 
-    public Ejemplar devolver_libro(){
+    public Ejemplar devolver_ejemplar(){
         Ejemplar ejemplarAux = getEjemplarEnPosesion();
         setEjemplarEnPosesion(null);
         setTiene_ejemplar(false);
