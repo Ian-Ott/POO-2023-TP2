@@ -4,6 +4,8 @@ import ar.edu.unlu.poo.academia.Nivel;
 import ar.edu.unlu.poo.agencia.AgenciaTurismo;
 import ar.edu.unlu.poo.agencia.Clasificacion;
 import ar.edu.unlu.poo.agenciadeautomoviles.SistemaDeAgencia;
+import ar.edu.unlu.poo.agenciadevuelo.modeloalternativo.SistemaDeGestionModificado;
+import ar.edu.unlu.poo.agenciadevuelo.modelooriginal.*;
 import ar.edu.unlu.poo.billetera.ejercicio12.BilleteraVirtualV3;
 import ar.edu.unlu.poo.billetera.ejercicio4.BilleteraVirtual;
 import ar.edu.unlu.poo.billetera.ejercicio5.BilleteraVirtualV2;
@@ -62,7 +64,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_12();
                 break;
             case 13:
-                //ejemplo_13();
+                ejemplo_13();
                 break;
             case 14:
                 //ejemplo_14();
@@ -637,6 +639,40 @@ public class ejemplos_ejerciciosMainTP2 {
         if (billeteraEjemploV3.realizarGastoCajaAhorro("Pepe", "ContraseniaSegura",3000.0d)){
             System.out.println("Se realizo el gasto correctamente!!!");
         }
+    }
+
+    public static void ejemplo_13(){
+        System.out.println("\nEjemplo del ejercicio 13");
+        System.out.println("\nPrimero muestro el escenario planteado...");
+        System.out.println("\nCreo un vuelo nuevo...");
+        ArrayList<Persona> miembros = new ArrayList<>();
+        Vuelo nuevoVuelo = new Vuelo(miembros);
+        System.out.println("\nAhora genero al tripulante Pepe");
+        Tripulante nuevo_tripulante = new Tripulante("Pepe","11 3465-7547", "MiCasa123", "Copiloto");
+        nuevoVuelo.agregarMiembrosVuelo(nuevo_tripulante);
+        System.out.println("\nComo un tripulante no puede ser un pasajero entonces creo un pasajero con los datos del tripulante...");
+        Pasajero nuevo_pasajero = new Pasajero("Pepe","11 3465-7547", "MiCasa123", 2);
+        nuevoVuelo.agregarMiembrosVuelo(nuevo_pasajero);
+        Ticket nuevoTicketVuelo = new Ticket(nuevoVuelo, nuevo_pasajero);
+        //el ticket no se usa pero lo implemento de igual forma
+        System.out.println("\nAhora muestro los miembros del vuelo...");
+        System.out.println("AVISO: para que sea mas claro el escenario planteado agregue dos variables booleanas que identifican cual persona es pasajero y cual tripulante");
+        System.out.println(nuevoVuelo);
+        System.out.println("Con esto se comprueba que si un miembro de la Tripulación desea subir a un vuelo como pasajero, entonces debe ser dado de alta 2 veces en el sistema");
+
+        System.out.println("\n________________ESCENARIO_MODIFICADO_____________________");
+        System.out.println("\nCreo el sistema de agencia Modificado...");
+        SistemaDeGestionModificado agenciaDeVueloV2 = new SistemaDeGestionModificado();
+        System.out.println("\nCreo un nuevo vuelo de avion...");
+        agenciaDeVueloV2.crearVuelo(2);
+        System.out.println("\nPruebo a agregar al mismo tripulante que el escenario anterior...");
+        agenciaDeVueloV2.agregarTripulante(2,"Pepe","11 3465-7547", "MiCasa123", "Copiloto");
+        System.out.println("\nAhora como el sistema fue modificado vamos a agregarle un nuevo rol al tripulante que va a ser el de pasajero...");
+        agenciaDeVueloV2.agregarRol(false,true,"Pepe",5,null);
+        System.out.println("\nAgrego un nuevo pasajero para probar que funciona el sistema...");
+        agenciaDeVueloV2.agregarPasajero(2,"Jazmin", "11 5426-8542", "MiCasa954", 6);
+        System.out.println("Ahora muestro los miembros del vuelo (en este caso deberia de aparecer solo Pepe con sus dos roles asignados y el otro pasajero)...");
+        agenciaDeVueloV2.mostrar_Vuelos();
     }
 
 
