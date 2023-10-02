@@ -4,13 +4,17 @@ import java.util.ArrayList;
 
 public class Clientes {
     private String nombre_apellido;
-    private int cant_compras = 0;
+    private int cant_compras;
     private String DNI;
     private String destino_fav;
-    ArrayList<Compra> comprasCliente = new ArrayList<>();
+    ArrayList<Compra> comprasCliente;
 
-    public void setNombre_apellido(String nombre_apellido) {
+    public Clientes(String nombre_apellido, String DNI, String destinoFav){
         this.nombre_apellido = nombre_apellido;
+        this.cant_compras = 0;
+        this.DNI = DNI;
+        this.destino_fav = destinoFav;
+        this.comprasCliente = new ArrayList<>();
     }
 
     public String getNombre_apellido() {
@@ -25,16 +29,8 @@ public class Clientes {
         return cant_compras;
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
-    }
-
     public String getDNI() {
         return DNI;
-    }
-
-    public void setDestino_fav(String destino_fav) {
-        this.destino_fav = destino_fav;
     }
 
     public String getDestino_fav() {

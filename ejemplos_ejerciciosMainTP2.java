@@ -3,6 +3,7 @@ import ar.edu.unlu.poo.academia.CredencialAlumno;
 import ar.edu.unlu.poo.academia.Nivel;
 import ar.edu.unlu.poo.agencia.AgenciaTurismo;
 import ar.edu.unlu.poo.agencia.Clasificacion;
+import ar.edu.unlu.poo.agencia.ejercicio14.SunBeach;
 import ar.edu.unlu.poo.agenciadeautomoviles.SistemaDeAgencia;
 import ar.edu.unlu.poo.agenciadevuelo.modeloalternativo.SistemaDeGestionModificado;
 import ar.edu.unlu.poo.agenciadevuelo.modelooriginal.*;
@@ -67,7 +68,7 @@ public class ejemplos_ejerciciosMainTP2 {
                 ejemplo_13();
                 break;
             case 14:
-                //ejemplo_14();
+                ejemplo_14();
                 break;
         }
 
@@ -675,5 +676,32 @@ public class ejemplos_ejerciciosMainTP2 {
         agenciaDeVueloV2.mostrar_Vuelos();
     }
 
+    public static void ejemplo_14(){
+        System.out.println("\nCreo el sistema de agencia de turismo... ");
+        SunBeach agenciaTurismoV2 = new SunBeach();
+        System.out.println("Registro algunos proveedores...");
+        agenciaTurismoV2.registroProveedores("FlechaBus",  Clasificacion.MEDIO_DE_TRANSPORTE, 10000.0d,4);
+        agenciaTurismoV2.registroProveedores("GeoTour",  Clasificacion.EXCURSION, 15000.0d,5);
+        agenciaTurismoV2.registroProveedores("Paraiso Hotel",  Clasificacion.HOSPEDAJE, 100000.0d,4);
+        System.out.println("\nAhora con estos proveedores registro un paquete de turismo...");
+        agenciaTurismoV2.registroPaqueteTurismo("Paquete Deluxe","Bariloche","GeoTour",Clasificacion.EXCURSION,"Paraiso Hotel", Clasificacion.HOSPEDAJE, "FlechaBus", Clasificacion.MEDIO_DE_TRANSPORTE, 7);
+        System.out.println("\nAhora hago que los clientes elijan ese paquete creado...");
+        agenciaTurismoV2.elegirPaquete("Pepe Rodriguez", "35.752.849","Bariloche", "Paquete Deluxe", LocalDate.of(2023,10,1));
+        agenciaTurismoV2.elegirPaquete("Jazmin Paez", "39.258.120", "Mar Del Plata", "Paquete Deluxe", LocalDate.of(2023,10,2));
+        agenciaTurismoV2.elegirPaquete("Rodrigo Gonzalez", "37.842.891", "Cordoba","Paquete Deluxe", LocalDate.of(2023,10,3));
+        agenciaTurismoV2.elegirPaquete("Patricia Llanos", "34.768.127", "Salta", "Paquete Deluxe", LocalDate.of(2023,10,4));
+        agenciaTurismoV2.elegirPaquete("Lucas Gomez ", "37.531.904", "Cordoba", "Paquete Deluxe", LocalDate.of(2023,10,5));
+        agenciaTurismoV2.elegirPaquete("Benjamin Gonzalez", "29.353.853", "Bariloche","Paquete Deluxe", LocalDate.of(2023,10,6));
+        agenciaTurismoV2.elegirPaquete("Agustina Martinez", "27.325.974", "Bariloche", "Paquete Deluxe", LocalDate.of(2023,10,7));
+
+        System.out.println("\nMuestro el paquete de turismo disponible...");
+        agenciaTurismoV2.mostrarPaquetesTurismo();
+        System.out.println("\nMuestro las compras de los clientes...");
+        agenciaTurismoV2.mostrarComprasClientes();
+        System.out.println("\nMuestro el informe de los proveedores...");
+        agenciaTurismoV2.informeProveedores();
+        System.out.println("\nMuestro el informe de ventas x destino:");
+        agenciaTurismoV2.informeVentasXDestino();
+    }
 
 }

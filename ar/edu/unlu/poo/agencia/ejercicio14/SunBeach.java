@@ -34,7 +34,7 @@ public class SunBeach {
                 nueva_compra.setPrecioFinal(precioXPersona);
                 Clientes clienteAux;
                 for (int j = 0; j < listaClientes.size(); j++){
-                    clienteAux = listaClientes.get(i);
+                    clienteAux = listaClientes.get(j);
                     if (DNI.equals(clienteAux.getDNI())){
                         clienteAux.sumarCant_compras();
                         clienteAux.sumarComprasCliente(nueva_compra);
@@ -46,10 +46,7 @@ public class SunBeach {
     }
 
     private void crearCliente(String nombre_apellido, String DNI,String destinoFav){
-        Clientes nuevoCliente = new Clientes();
-        nuevoCliente.setNombre_apellido(nombre_apellido);
-        nuevoCliente.setDNI(DNI);
-        nuevoCliente.setDestino_fav(destinoFav);
+        Clientes nuevoCliente = new Clientes(nombre_apellido,DNI,destinoFav);
         listaClientes.add(nuevoCliente);
     }
 
@@ -104,6 +101,7 @@ public class SunBeach {
                 nuevoPaquete.agregarProveedorDelPaquete(proveedorAux);
             }
         }
+        paquetesDeTurismo.add(nuevoPaquete);
     }
 
     public void mostrarPaquetesTurismo(){
@@ -118,14 +116,14 @@ public class SunBeach {
                 proveedorAux = paqueteAux.getProveedoresDelPaquete().get(j);
                 System.out.print((j + 1) + "- " + proveedorAux.getNombre() + " | ");
             }
-            System.out.println("Clientes: ");
+            System.out.println("\nClientes: ");
             if (paqueteAux.getCompradores().isEmpty()){
                 System.out.println("Aun no hay clientes");
             }else {
                 Clientes clienteAux;
                 for (int j = 0; j < paqueteAux.getCompradores().size(); j++){
                     clienteAux = paqueteAux.getCompradores().get(j);
-                    System.out.println((j + 1) + "-Nombre Completo: " + clienteAux.getNombre_apellido() + "DNI: " + clienteAux.getDNI() + " | ");
+                    System.out.println((j + 1) + "-Nombre Completo: " + clienteAux.getNombre_apellido() + " | DNI: " + clienteAux.getDNI() + " | ");
                 }
             }
             System.out.println("___________________________________________________________________________");
