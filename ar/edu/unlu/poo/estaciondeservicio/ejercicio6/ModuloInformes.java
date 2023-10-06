@@ -57,7 +57,6 @@ public class ModuloInformes {
         for (int i = 0; i < empleados.size(); i++){
             if (empleados.get(i).getNombre().equals(nombrePlayero)){
                 nueva_venta.setPlayeroAfectado(empleados.get(i));
-                empleados.get(i).agregarNuevaVenta(nueva_venta);
                 listaVentas.add(nueva_venta);
             }
         }

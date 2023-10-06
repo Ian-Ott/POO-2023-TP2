@@ -10,7 +10,7 @@ public class Empleado {
     private String direccion;
     private String DNI;
     private String telefono;
-    private ArrayList<Venta> ventasEmpleado = new ArrayList<>();
+    //private ArrayList<Venta> ventasEmpleado = new ArrayList<>();
     //posiblemente eliminar esto
     private double totalVentasEmpleado = 0F;
 
@@ -54,13 +54,6 @@ public class Empleado {
         return telefono;
     }
 
-    public void agregarNuevaVenta(Venta nueva_venta) {
-        ventasEmpleado.add(nueva_venta);
-    }
-
-    public ArrayList<Venta> getVentasEmpleado() {
-        return ventasEmpleado;
-    }
 
     public void setTotalVentasEmpleado(double totalVentasEmpleado) {
         this.totalVentasEmpleado = totalVentasEmpleado;
