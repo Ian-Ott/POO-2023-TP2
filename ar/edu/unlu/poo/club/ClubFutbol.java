@@ -60,7 +60,7 @@ public class ClubFutbol {
         }else {
             System.out.println("Actividades disponibles con la subscripcion Destacada: ");
             System.out.println("1-Acceso a las ligas del club");
-            System.out.println("2-Viajes exclusivos");
+            System.out.println("2-Entradas exclusivas a partidos");
             System.out.println("3-Libre entrada y salida del recinto mientras se encuentre abierto");
         }
     }
