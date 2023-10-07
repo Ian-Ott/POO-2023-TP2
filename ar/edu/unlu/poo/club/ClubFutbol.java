@@ -50,10 +50,18 @@ public class ClubFutbol {
     public void actividades_sub(Subscripciones suscripcionPedida){
         if (suscripcionPedida.equals(Subscripciones.BASICA)){
             System.out.println("Actividades disponibles con la subscripcion basica: ");
+            System.out.println("1-Entrenamiento");
+            System.out.println("2-Acceso a la cafeteria del club");
         } else if (suscripcionPedida.equals(Subscripciones.INTERMEDIA)) {
             System.out.println("Actividades disponibles con la subscripcion intermedia: ");
+            System.out.println("1-Acceso a los partidos");
+            System.out.println("2-Descuento en prendas del equipo");
+            System.out.println("3-Entrenamiento Personalizado");
         }else {
             System.out.println("Actividades disponibles con la subscripcion Destacada: ");
+            System.out.println("1-Acceso a las ligas del club");
+            System.out.println("2-Viajes exclusivos");
+            System.out.println("3-Libre entrada y salida del recinto mientras se encuentre abierto");
         }
     }
 
