@@ -8,7 +8,7 @@ public class PaqueteTurismo {
     private String destino;
     private String medioTransporte;
     private String hospedaje;
-    private ArrayList<String> excursiones;
+    private ArrayList<String> excursiones = new ArrayList<>();
     private LocalDate FechaAdquirido = null;
     //esto se establece para el cliente nomas
 

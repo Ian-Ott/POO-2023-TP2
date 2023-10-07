@@ -152,7 +152,7 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("Solicito el registro que contiene a los proveedores...");
         sunBeach.registrosProveedores();
 
-        System.out.println("Creo los paquetes de turismo...");
+        System.out.println("\nCreo los paquetes de turismo...");
         ArrayList<String> excursiones = new ArrayList<>();
         excursiones.add("Excursion en la montania (SafeTravel)");
         excursiones.add("Excursion por el lago (SafeTravel)");
@@ -162,11 +162,18 @@ public class ejemplos_ejerciciosMainTP2 {
         excursiones.add("Excursion por el lago (GeoTravel)");
         sunBeach.nuevoPaqueteTurismo("Paquete Premium", "Polinesia Francesa", "Avion (Elitas Travel)", "Hotel (hotel kia Ora)", excursiones);
 
-        System.out.println("Solicito mostrar los paquetes de turismo...");
+        System.out.println("\nSolicito mostrar los paquetes de turismo...");
         sunBeach.mostrarPaquetesTurismo();
 
-        System.out.println("Agrego nuevo clientes y realizo compras...");
-        sunBeach.nueva_compra(false, "Pepito Morales", "34.783.436", "Polinesia Francesa", "Paquete Premium");
+        System.out.println("\nAgrego nuevo clientes y realizo compras...");
+        sunBeach.nueva_compra(false, "Pepe Morales", "34.783.436", "Polinesia Francesa", "Paquete Premium");
+        sunBeach.nueva_compra(false, "Jazmin Martinez", "36.124.219", "Bariloche", "Paquete Deluxe");
+
+        System.out.println("\nMuestro el registro de clientes...");
+        sunBeach.registroCliente();
+
+        System.out.println("\nMuestro el reporte mensual...");
+        sunBeach.informe_mensual();
     }
 
     public static void ejemplo_3(){

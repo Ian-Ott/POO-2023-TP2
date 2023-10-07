@@ -70,7 +70,7 @@ public class AgenciaTurismo {
         for (int i = 0; i < clientesAgencia.size(); i++){
             ArrayList<PaqueteTurismo> paquetesCliente = clientesAgencia.get(i).getPaquetesAdquiridos();
             for (int j = 0; j < paquetesCliente.size(); j++){
-                if (paquetesDisponibles.get(k).equals(paquetesCliente.get(j))){
+                if (paquetesDisponibles.get(k).getNombrePaquete().equals(paquetesCliente.get(j).getNombrePaquete())){
                     if (LocalDate.now().getMonth().equals(paquetesCliente.get(j).getFechaAdquirido().getMonth())){
                         System.out.println("____________________________________________________________________________");
                         System.out.println("Cliente: " + i + "- Nombre y apellido: " + clientesAgencia.get(i).getNombre_apellido() + " | DNI: " + clientesAgencia.get(i).getDNI());
@@ -108,11 +108,11 @@ public class AgenciaTurismo {
     public void mostrarPaquetesTurismo(){
         System.out.println("Paquetes disponibles: ");
         for (int i = 0; i < paquetesDisponibles.size(); i++){
-            System.out.println("____________________________________________________________________________");
+            System.out.println("\n____________________________________________________________________________");
             System.out.println((i + 1) + "-Paquete: " + paquetesDisponibles.get(i).getNombrePaquete() + " | Destino: " + paquetesDisponibles.get(i).getDestino() + " | Medio de Transporte: " + paquetesDisponibles.get(i).getMedioTransporte() + " | Hospedaje: " + paquetesDisponibles.get(i).getHospedaje());
             System.out.print("\nExcursiones: ");
             for (int j = 0; j < paquetesDisponibles.get(i).getExcursiones().size(); j++){
-                System.out.print(" " + paquetesDisponibles.get(i).getExcursiones().get(j));
+                System.out.print("\n " + paquetesDisponibles.get(i).getExcursiones().get(j));
             }
         }
     }
