@@ -180,7 +180,7 @@ public class ejemplos_ejerciciosMainTP2 {
         System.out.println("\nEjemplos del ejercicio 3: ");
         System.out.println("Creo la academia...");
         Academia academiaDanzas = new Academia();
-        System.out.println("Creo algunas displinas con sus diagramacones y algunos profesores...");
+        System.out.println("Creo algunas displinas con sus diagramaciones y algunos profesores...");
         academiaDanzas.crearDisciplina("Tango", Nivel.INICIAL, "Lunes y viernes", "9:00 a 12:00", "Lorena", 3);
         academiaDanzas.crearDisciplina("Bachata", Nivel.INTERMEDIO,"Martes y Jueves", "17:00 a 20:00", "Diego", 7);
         academiaDanzas.crearDisciplina("Tango", Nivel.INTERMEDIO, "Martes y Jueves", "18:00 a 21:00", "Lorena",2);

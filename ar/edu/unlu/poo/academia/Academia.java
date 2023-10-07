@@ -99,6 +99,9 @@ public class Academia {
             if (asistenciaAux.getComisionElegida().getProfesor().equals(profe)){
                 System.out.println("\nAlumno: " + asistenciaAux.getAlumno().getNombre_apellido() + " | Disciplina: " + asistenciaAux.getDisciplina());
                 System.out.println("Fechas Asistidas este mes: \n");
+                if (asistenciaAux.getFechasAsistidas().isEmpty()){
+                    System.out.println("No asistio este mes a clases");
+                }
                 for (int j = 0; j < asistenciaAux.getFechasAsistidas().size();j++){
                     fechaAux = asistenciaAux.getFechasAsistidas().get(j);
                     if (mes.equals(fechaAux.getMonth())){
