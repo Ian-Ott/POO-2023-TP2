@@ -125,9 +125,9 @@ public class ejemplos_ejerciciosMainTP2 {
         nuevo_club.inscripcion("Florencia", "Planes", "35.279.299", 33, "11-1234-3769", "Micasa475", "Flor555@gmail.com", Subscripciones.BASICA );
         nuevo_club.inscripcion("Santiago", "Diaz", "43.925.911", 20, "11-1456-4457", "Micasa997", "Santi72@gmail.com", Subscripciones.INTERMEDIA );
 
-        System.out.println("\n muestro el reporte mensual de usuarios inscriptos en septiembre... \n(en este caso deberia de mostrar todos porque se inscribieron hoy esos nuevos socios)");
+        System.out.println("\n muestro el reporte mensual de usuarios inscriptos en octubre... \n(en este caso deberia de mostrar todos porque se inscribieron hoy esos nuevos socios)");
         System.out.println("AVISO: si no muestra nada es porque esta probando el ejemplo en un mes que no es septiembre por lo que los alumnos seran creados con el mes actual que sea");
-        nuevo_club.reporte_mensual(Month.SEPTEMBER);
+        nuevo_club.reporte_mensual(Month.OCTOBER);
 
         System.out.println("\nMuestro las actividades disponibles segun la subscripcion...");
         nuevo_club.actividades_sub(Subscripciones.BASICA);
